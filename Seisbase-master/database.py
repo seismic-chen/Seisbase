@@ -5,6 +5,7 @@ Created on Thu Oct 26 09:24:07 2017
 Database class, contains Database, Station and Seed objects
 Jan. 18, 2018, add network class such that the database could read in data from
 other network
+Jan. 20, 2018, fix the error in select function
 @author: yunfeng
 """
 import matplotlib.pyplot as plt
