@@ -18,7 +18,7 @@ parfile=Parfile()
 
 db = Database(networks=[],code='noise_database')
 database_directory=parfile.database_directory
-pattern='FullSeed_*.seed'
+pattern='*.seed'
 network_all=next(os.walk(database_directory))[1]
 for network_code in network_all:
     if len(network_code) != 2:

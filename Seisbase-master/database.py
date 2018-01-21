@@ -6,11 +6,9 @@ Database class, contains Database, Station and Seed objects
 Jan. 18, 2018, add network class such that the database could read in data from
 other network
 Jan. 20, 2018, fix the error in select function
+add exception when reading miniseed file
 @author: yunfeng
 """
-
-
-
 
 import matplotlib.pyplot as plt
 from matplotlib.dates import date2num,datetime,DateFormatter
@@ -20,6 +18,7 @@ import os
 import copy
 import fnmatch
 from par import Parfile
+import shutil
 parfile=Parfile()
 
 class Database(object):
@@ -299,35 +298,78 @@ class Seed(object):
         Fullseed file to miniseed using rdseed first, then read in with obspy
         """
         import subprocess
-        cwd = os.getcwd()
-        seed_directory = os.path.dirname(self.path)
-        file_name = os.path.basename(self.path)
-        os.chdir(seed_directory)
-        rdseed_cmd = parfile.rdseed_path
-        subprocess.call([rdseed_cmd, '-d', '-o', '4', '-f', file_name])
-        #st = read(self.path,starttime=t0, endtime=t1)
-        if t0 and t1:
-            st = read('mini.seed',starttime=t0, endtime=t1)
-        else:
-            st = read('mini.seed')
-        # delete miniseed
-        os.unlink('mini.seed')
-        os.chdir(cwd)
+        # read the miniseed file
+        try:
+            if t0 and t1:
+                st = read(self.path,starttime=t0, endtime=t1)
+            else:
+                st = read(self.path)
+        except:
+            cwd = os.getcwd()
+            seed_directory = os.path.dirname(self.path)
+            file_name = os.path.basename(self.path)        
+            os.chdir(seed_directory)
+            rdseed_cmd = parfile.rdseed_path    
+            # if miniseed file exists, remove the file first
+            if os.path.exists('mini.seed'):
+                os.unlink('mini.seed')
+            subprocess.call([rdseed_cmd, '-d', '-o', '4', '-f', file_name])
+            if t0 and t1:
+                st = read('mini.seed',starttime=t0, endtime=t1)
+            else:
+                st = read('mini.seed')
+            # delete miniseed
+            os.unlink('mini.seed')
+            os.chdir(cwd)
         return st
+    
+    def move_seed(self,output_directory=None,output_name=None,
+                            channel=None):
+        """ Move (make a copy of) a daily seed/miniseed files to the target 
+        direcotry        
+        """
+        import subprocess
+
+        filename=os.path.basename(self.path)
+        default_filename = os.path.join(output_directory, filename)
+        if output_name is not None:
+            default_filename = os.path.join(output_directory, output_name)
+        self.miniseed_direcotry=output_directory
+        shutil.copyfile(self.path,default_file)
+        return self.miniseed_direcotry
+    
+    def merge_seed(self,target_directory=None,target_seed=None):
+        """ Merge a daily seed/miniseed files with an target seed
+        """
+        import subprocess
+        if not os.path.exists(self.path):  
+            print "seed file doesn't exists"  
+            raise IOError  
+        filein=self.path
+        fileout=os.path.join(target_directory, target_seed)
+        # check if output file exists
+        if os.path.isfile(fileout):
+            mode='ab'
+        else:
+            mode='wb'           
+        with open(fileout,mode) as output: 
+            with open(filein, 'rb') as input:  
+                data=input.read()  
+                output.write(data)  
     
     def convert_to_miniseed(self,output_directory=None,output_name=None,
                             channel=None):
         """ Convert the Fullseed file to miniseed
         could append argument to extract certain station or component
           -C arg retrieve the comments where 'arg' is either STN or CHN"""
-        import subprocess
+        import subprocess   
         cwd = os.getcwd()
         seed_directory = os.path.dirname(self.path)
         file_name = os.path.basename(self.path)
         os.chdir(seed_directory)
         if output_directory is None:
             output_directory = cwd
-        rdseed_cmd = 'rdseed'
+        rdseed_cmd = parfile.rdseed_path
         subprocess.call([rdseed_cmd, '-d', '-o', '4', '-f', file_name, '-q',output_directory])
         # check if miniseed exists
         default_filename = os.path.join(output_directory, "mini.seed")
@@ -335,7 +377,7 @@ class Seed(object):
             print "Failed to read seed"
             return None 
         # if miniseed file exists
-        if default_filename is not None:
+        if output_name is not None:
             new_filename = os.path.join(output_directory, output_name)
             os.rename(default_filename, new_filename)
             self.miniseed_path = new_filename
