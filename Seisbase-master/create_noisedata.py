@@ -4,7 +4,7 @@
 Created on Fri Jan 19 11:46:28 2018
 convert the miniseed file from IRIS to input formats required by ancc and 
 python code
-Jan. 20, 2018, use new function merge_seed to create monthly seed 
+Jan. 20, 2018, use new function merge_seed to create monthly seed
 @author: yunfeng
 """
 from obspy import read
@@ -19,13 +19,17 @@ from par import Parfile
 parfile=Parfile()
 # define two station that need to be cross-correlated with
 net1='IU'
-sta1='BRGNA'
+sta1='DWPF'
 #net2='IU'
 #sta2 = 'DWPF'
 db_sta1 = db.select(network=net1,station=sta1)
 #db_sta2 = db.select(network=net2,station=sta2)
-output_name = db_sta1.networks[0].code+'.'+db_sta1.networks[0].stations[0].code + '.BHZ.mseed'
+miniseed_name = db_sta1.networks[0].code+'.'+db_sta1.networks[0].stations[0].code + '.BHZ.mseed'
+k=0
+nseed=len(db_sta1.networks[0].stations[0].seeds)
 for seed1 in db_sta1.networks[0].stations[0].seeds:
+    k=k+1
+    print('Merging {0:d} out of {1:d} seeds'.format(k,nseed))
     year='{:04d}'.format(seed1.time.year)
     month='{:02d}'.format(seed1.time.month)    
     yyyymm = int(year+month)
@@ -33,6 +37,6 @@ for seed1 in db_sta1.networks[0].stations[0].seeds:
     # create directory if not exits
     if not os.path.exists(miniseed_directory):
         os.makedirs(miniseed_directory)
+    miniseed_path=os.path.join(miniseed_directory,miniseed_name)
     # merge seed with an existing seed in the target directory
-    seed1.merge_seed(target_directory=miniseed_directory,target_seed=output_name)
-    
+    seed1.merge_seed(target_directory=miniseed_directory,target_seed=miniseed_name)

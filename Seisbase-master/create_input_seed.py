@@ -1,12 +1,14 @@
-# python code to create the input data
-# Nov 13, 2016, Yunfeng Chen, Global Seismology Group, University of Alberta
-# Nov. 14, 2017, Y.C., GSG, UofA.
-# Use database class and change the code to reflect more general use
-# Jan. 4, 2018, Y.C.
-# Merge dataless and miniseed files
 """
-This code prepare miniseed data for ancc code
+python code to create the input data
+Nov 13, 2016, Yunfeng Chen, Global Seismology Group, University of Alberta
+Nov. 14, 2017, Y.C., GSG, UofA.
+Use database class and change the code to reflect more general use
+Jan. 4, 2018, Y.C., merge dataless and miniseed files
+Jan. 21, 2018, Y.C., modify the code to use new database class, which includes
+network class
 
+This code prepare miniseed data for ancc code, adopt resample routine from 
+seismic ambient noise tomography package
 """
 from obspy import read
 import glob
@@ -15,6 +17,8 @@ from database import Database,Station,Seed
 import pickle 
 from obspy.io.xseed import Parser
 import numpy as np
+from par import Parfile
+parfile=Parfile()
 #import resample
 def resample(trace, dt_resample):
     """
@@ -42,21 +46,23 @@ def resample(trace, dt_resample):
         #trace.stats.endtime = trace.stats.endtime + max(tinterp)-max(tp)
 
 # load the database object
-file_db = open('CR_database.obj', 'r') 
+file_db = open('noise_database.obj', 'r') 
 db = pickle.load(file_db)
 
 # define two station that need to be cross-correlated with
-sta1 = 'BRU'
-sta2 = 'CLA'
-db_sta1 = db.select(station=sta1)
-db_sta2 = db.select(station=sta2)
+sta1='ANMO'
+net1='IU'
+sta2='DWPF'
+net2='IU'
+db_sta1 = db.select(network=net1,station=sta1)
+db_sta2 = db.select(network=net2,station=sta2)
 
 miniseed_file='{0:s}_{1:s}.seed'.format(sta1,sta2)
 # convert the station xml to dateless seed
-stationxml_directory='/home/yunfeng/project/noise_cc/seismic-noise-tomography-master/'+\
-'StationXML/'
-xml1 = stationxml_directory+sta1+'.xml'
-xml2 = stationxml_directory+sta2+'.xml'
+stationxml_directory=parfile.stationxml_directory
+
+xml1 = stationxml_directory+net1+'.'+sta1+'.xml'
+xml2 = stationxml_directory+net2+'.'+sta2+'.xml'
 convertor_path=stationxml_directory+'stationxml-converter.jar'
 dataless_file=sta1+'_'+sta2+'.dataless'
 cmd='java -jar {0:s} --seed {1:s} {2:s} --output {3:s}'.format(convertor_path,xml1,xml2,dataless_file)
@@ -65,16 +71,16 @@ cmd='java -jar {0:s} --seed {1:s} {2:s} --output {3:s}'.format(convertor_path,xm
 #    sp2 = Parser('/Users/yunfeng/20_30/research/python_codes/seismic-noise-tomography-master/'+
 #                'StationXML/'+st2[0].stats['station']+'.dataless')
 os.system(cmd)
-# filter option
+# filter options
 freqmin=1./60.
 freqmax=1./3.
 corners=2
 zerophase=True
 period_resample=1.0
 #for BRU_data in glob.glob(database_directory + 'BRU/2006/*seed'):
-for seed1 in db_sta1.stations[0].seeds: 
+for seed1 in db_sta1.networks[0].stations[0].seeds[0:365]: 
     # check if the corresponding data from station2 exists
-    seed2_list = db_sta2.stations[0].select(time=seed1.time).seeds
+    seed2_list = db_sta2.networks[0].stations[0].select(time=seed1.time).seeds
     if seed2_list:  # check if list is empty
         seed2=seed2_list[0]
         if os.path.isfile(seed2.path):
@@ -82,7 +88,7 @@ for seed1 in db_sta1.stations[0].seeds:
             try:
                 year='{:04d}'.format(seed1.time.year)
                 month='{:d}'.format(seed1.time.month)
-                output_directory = '/home/yunfeng/project/noise_cc/'+\
+                output_directory = '/Users/yunfeng/20_30/research/ambient_noise/'+\
                 'ancc-1.0-0.src/SEED/'+year+'/'+month
                 # create directory if not exits
                 if not os.path.exists(output_directory):
@@ -118,10 +124,12 @@ for seed1 in db_sta1.stations[0].seeds:
             for n1 in range(0,len(st1)):
                 resample(st1[n1], dt_resample=period_resample)
                 # change the network name
-                st1[n1].stats.network = 'CR'
+                if st1[n1].stats.network == 'XX':
+                    st1[n1].stats.network = 'CR'
             for n2 in range(0,len(st2)):
                 resample(st2[n2], dt_resample=period_resample)
-                st2[n2].stats.network = 'CR'
+                if st2[n2].stats.network == 'XX':
+                    st2[n2].stats.network = 'CR'
 #    sampling_rate = int(st1[0].stats.sampling_rate)
 #    st1.decimate(sampling_rate,strict_length=False)
 #    sampling_rate = int(st2[0].stats.sampling_rate)
@@ -140,5 +148,5 @@ for seed1 in db_sta1.stations[0].seeds:
         jday = st1[0].stats.starttime.julday
         seed_file = 'D.{0:4d}.{1:03d}.{2:d}.{3:d}.000000.seed'.format(year,jday,month,day)
         # check if seed file exists
-        if os.path.isfile('/home/yunfeng/project/seisbase_python/Seisbase/seed.rdseed'):
+        if os.path.isfile('/Users/yunfeng/20_30/research/python_codes/seisbase_python/Seisbase-master/seed.rdseed'):
             os.rename('seed.rdseed',output_directory+'/'+seed_file)

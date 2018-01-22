@@ -335,7 +335,7 @@ class Seed(object):
         if output_name is not None:
             default_filename = os.path.join(output_directory, output_name)
         self.miniseed_direcotry=output_directory
-        shutil.copyfile(self.path,default_file)
+        shutil.copyfile(self.path,default_filename)
         return self.miniseed_direcotry
     
     def merge_seed(self,target_directory=None,target_seed=None):
