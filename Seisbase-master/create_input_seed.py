@@ -6,7 +6,8 @@ Use database class and change the code to reflect more general use
 Jan. 4, 2018, Y.C., merge dataless and miniseed files
 Jan. 21, 2018, Y.C., modify the code to use new database class, which includes
 network class
-
+Feb. 24, 2018, Y.C., combine the data for any given number of stations
+ 
 This code prepare miniseed data for ancc code, adopt resample routine from 
 seismic ambient noise tomography package
 """
@@ -49,13 +50,19 @@ def resample(trace, dt_resample):
 file_db = open('noise_database.obj', 'r') 
 db = pickle.load(file_db)
 
-# define two station that need to be cross-correlated with
+# define a station/network list that need to be cross-correlated with
+stalist={'ANMO','DWPF','COR'}
+netlist={'IU','IU','IU'}
+
+
+# define two stations that need to be cross-correlated with
 sta1='ANMO'
 net1='IU'
 sta2='DWPF'
 net2='IU'
 db_sta1 = db.select(network=net1,station=sta1)
 db_sta2 = db.select(network=net2,station=sta2)
+
 
 miniseed_file='{0:s}_{1:s}.seed'.format(sta1,sta2)
 # convert the station xml to dateless seed
@@ -72,7 +79,7 @@ cmd='java -jar {0:s} --seed {1:s} {2:s} --output {3:s}'.format(convertor_path,xm
 #                'StationXML/'+st2[0].stats['station']+'.dataless')
 os.system(cmd)
 # filter options
-freqmin=1./60.
+freqmin=1./200.
 freqmax=1./3.
 corners=2
 zerophase=True

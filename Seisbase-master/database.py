@@ -13,12 +13,14 @@ add exception when reading miniseed file
 import matplotlib.pyplot as plt
 from matplotlib.dates import date2num,datetime,DateFormatter
 import numpy as np
-from obspy import read
+from obspy import read, UTCDateTime
 import os
 import copy
 import fnmatch
 from par import Parfile
 import shutil
+import warnings
+
 parfile=Parfile()
 
 class Database(object):
@@ -227,7 +229,15 @@ class Station(object):
     
     def select(self,time=None):
         """ Select seed that matches the given time, modified after 
-        obspy select function"""
+        obspy select function
+        ---------------------------------------------------------------------------
+        Change Log:
+        Feb. 28, 2018, Y.C., check if input date is UTCDateTime object
+        ---------------------------------------------------------------------------  
+        
+        """                
+        if not isinstance(time, UTCDateTime):
+            warnings.warn('The input datestr is not a UTCDateTime object')
         seeds = list()
         for seed in self.seeds:
         # skip if any given criterion is not matched
