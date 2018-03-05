@@ -7,6 +7,7 @@ Jan. 18, 2018, add network class such that the database could read in data from
 other network
 Jan. 20, 2018, fix the error in select function
 add exception when reading miniseed file
+Mar. 4, 2018, add function to check the completeness of the database
 @author: yunfeng
 """
 
@@ -20,6 +21,7 @@ import fnmatch
 from par import Parfile
 import shutil
 import warnings
+import datetime
 
 parfile=Parfile()
 
@@ -59,9 +61,11 @@ class Database(object):
         return database
     
 class Network(object):
-    """ Network class contains the Station class """
+    """ Network class contains the Station class
+    Change log: Mar. 4, 2018, Y.C., include network code in station class
+    """
     def __init__(self,stations=list(),code='',path='',start_date='',end_date='',
-                 total_number_of_stations=None):
+                 total_number_of_stations=None):     
         self.stations = stations
         self.code = code
         self.path = path
@@ -85,12 +89,14 @@ class Network(object):
     def add(self,stationfile):
         """ add new Seed class """
         self.stations.append(stationfile)
+        self._get_network_code()
+        
         
     def __str__(self):
         """ Modified after obspy __str__ function """
         contents = self.get_contents()     
         ret = ("Network {network_name}\n"
-               "\Network Code: {station_code}\n"
+               "\tNetwork Code: {station_code}\n"
                "\tStation Count: A total of {total} stations\n"
                "\tStart-End: {start_date} - {end_date}\n")
         ret = ret.format(
@@ -118,14 +124,24 @@ class Network(object):
     def get_total_number_of_stations(self):
         """ count the total number of seeds file """
         self.total_number_of_stations = len(self.stations)
-        return self.total_number_of_stations    
+        return self.total_number_of_stations   
+    
+    def _get_network_code(self):
+        """" get the network code and assign to station class """
+        for n in range(0,len(self.stations)):
+            self.stations[n].network_code = self.code
+        return self
     
 class Station(object):
-    """ Station class contains the Seed class """
-    def __init__(self,seeds=list(),code='',path='',start_date='',end_date='',
+    """ Station class contains the Seed class 
+    Change Log: Mar. 4, 2018, Y.C., add check_completness function
+    the data
+    """
+    def __init__(self,seeds=list(),network_code='',code='',path='',start_date='',end_date='',
                  latitude=None,longitude=None,elevation=None,total_number_of_seeds=None,
-                 dateless=None):
+                 dataless=None):
         self.seeds = seeds
+        self.network_code=network_code
         self.code = code
         self.path = path
         self.start_date=str(start_date)
@@ -134,10 +150,59 @@ class Station(object):
         self.latitude=latitude
         self.longitude=longitude
         self.elevation=elevation
-        self.dateless=dateless
+        self.dataless=dataless
 #    def __repr__(self):
 #    def __str__(self):
-
+        
+    def check_completeness(self,start_date=None,end_date=None,output_to_file=False):
+        """ Return the percentage of data and missing date based on the operation
+        period of stations or given start_date and end_date
+        """
+        # prepare date string list
+        time_string_list = list()
+        missing_date = list()
+        yday_list = list()
+        year_list = list()
+        for n in range(0,len(self.seeds)):
+            tmp_time_string = self.seeds[n].time
+            time_string_list.append(tmp_time_string.datetime)
+            year_list.append(tmp_time_string.timetuple().tm_year)
+            yday_list.append(tmp_time_string.timetuple().tm_yday)    
+        # obtain the station operation period from stationxml file
+        self.get_inventory()
+        network = self.dataless
+        if start_date is None:
+            start_date=network[0][0].start_date
+        if end_date is None:
+            end_date=network[0][0].end_date
+        self.start_date=start_date
+        self.end_date=end_date
+        duration=end_date.datetime-start_date.datetime
+        # create consecutive date list
+        base = start_date
+        numdays=duration.days
+        datelist = [start_date + datetime.timedelta(days=x) for x in range(0, numdays)]
+        
+        if time_string_list:
+            if min(time_string_list) < network[0][0].start_date:
+                warnings.warn('Data begins before the first day of the station')
+            if max(time_string_list) > network[0][0].end_date:
+                warnings.warn('Data ends after the last day of the station')
+        data_percentage=len(self.seeds)/float(duration.days)*100.
+        self.data_perentage=data_percentage
+        # output the missing date to file
+        if output_to_file:
+            f=open('{0:s}_missing_data.txt'.format(self.code),'w')
+            f.write("Start date: {0:%Y/%m/%d %H:%M:%S.%f}\n".format(start_date.datetime))
+            f.write('End date: {0:%Y/%m/%d %H:%M:%S.%f}\n'.format(end_date.datetime))
+            for n in range(0,len(datelist)):
+                if datelist[n] not in time_string_list:
+                    f.write('{0:%Y/%m/%d}\n'.format(datelist[n].datetime))
+                    missing_date.append(datelist[n])
+            f.close()
+            self.missing_date = missing_date
+        return self
+           
     def get_statics(self):
         import matplotlib.cm as cm
         """ Return data statistics for a given station """
@@ -217,11 +282,15 @@ class Station(object):
         ax.xaxis.tick_top()
         
     def get_inventory(self):
+        """
+        Change Log:
+        Mar. 4, 2018, Y.C., read individual station xml instead of network ones
+        """
         from obspy import read_inventory
-        inventory_path = parfile.inventory_path
+        inventory_path = parfile.stationxml_directory+self.network_code+'.'+self.code+'.xml'
         inv = read_inventory(inventory_path,format='STATIONXML')
         network = inv.networks[0].select(station=self.code)
-        self.dateless = network
+        self.dataless = network
         self.latitude = network[0][0].latitude
         self.longitude = network[0][0].longitude
         self.elevation = network[0][0].elevation
@@ -259,14 +328,16 @@ class Station(object):
         self.get_total_number_of_seeds()
         
         ret = ("Station {station_name}\n"
+               "\tNetwork Code: {network_code}\n"
                "\tStation Code: {station_code}\n"
                "\tSeed Count: A total of {total} seeds\n"
                "\tStart-End: {start_date} - {end_date}\n"
                "\tLatitude: {lat:.2f}, Longitude: {lng:.2f}, "
                "Elevation: {elevation:.1f} m\n"
-               "\tDateless: {dateless}\n")
+               "\tDataless: {dataless}\n")
         ret = ret.format(
             station_name=contents["stations"][0],
+            network_code=self.network_code,
             station_code=self.code,
             total=self.total_number_of_seeds,
             start_date=str(self.start_date) if self.start_date else "",
@@ -274,7 +345,7 @@ class Station(object):
             lat=self.latitude if self.latitude else -999, 
             lng=self.longitude if self.longitude else -999,
             elevation=self.elevation if self.elevation else -999,
-            dateless=self.dateless if self.dateless else '')
+            dataless=self.dataless if self.dataless else '')
         return ret
     
     def _repr_pretty_(self, p, cycle):
