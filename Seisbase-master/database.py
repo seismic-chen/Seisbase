@@ -184,9 +184,12 @@ class Station(object):
         datelist = [start_date + datetime.timedelta(days=x) for x in range(0, numdays)]
         
         if time_string_list:
-            if min(time_string_list) < network[0][0].start_date:
-                warnings.warn('Data begins before the first day of the station')
             if network[0][0].end_date:
+                warnings.warn('Station start date is not defined')
+                if min(time_string_list) < network[0][0].start_date:
+                    warnings.warn('Data begins before the first day of the station')
+            if network[0][0].end_date:
+                warnings.warn('Station end date is not defined')
                 if  max(time_string_list) > network[0][0].end_date:
                     warnings.warn('Data ends after the last day of the station')
                 
