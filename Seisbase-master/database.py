@@ -186,8 +186,10 @@ class Station(object):
         if time_string_list:
             if min(time_string_list) < network[0][0].start_date:
                 warnings.warn('Data begins before the first day of the station')
-            if max(time_string_list) > network[0][0].end_date:
-                warnings.warn('Data ends after the last day of the station')
+            if network[0][0].end_date:
+                if  max(time_string_list) > network[0][0].end_date:
+                    warnings.warn('Data ends after the last day of the station')
+                
         data_percentage=len(self.seeds)/float(duration.days)*100.
         self.data_perentage=data_percentage
         # output the missing date to file
@@ -203,7 +205,7 @@ class Station(object):
             self.missing_date = missing_date
         return self
            
-    def get_statics(self):
+    def get_statistics(self):
         import matplotlib.cm as cm
         """ Return data statistics for a given station """
         # prepare date string list
