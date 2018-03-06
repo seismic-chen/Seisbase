@@ -4,7 +4,7 @@
     <volume_identifier blockette="010">
       <beginning_time>1950-01-01T00:00:00.000000Z</beginning_time>
       <end_time>2500-01-01T00:00:00.000000Z</end_time>
-      <volume_time>2017-11-21T01:40:12.000000Z</volume_time>
+      <volume_time>2018-03-06T18:35:30.000000Z</volume_time>
       <originating_organization></originating_organization>
       <label></label>
     </volume_identifier>
@@ -40,34 +40,38 @@
     </generic_abbreviation>
     <generic_abbreviation blockette="033">
       <abbreviation_lookup_code>3</abbreviation_lookup_code>
-      <abbreviation_description>null-Taurus, 40 Vpp (gain 0.4), 20 sps, low impeda</abbreviation_description>
+      <abbreviation_description>Trillium 240, generation 1, 240 s, 1196 V/m/s-Taur</abbreviation_description>
     </generic_abbreviation>
     <generic_abbreviation blockette="033">
       <abbreviation_lookup_code>4</abbreviation_lookup_code>
-      <abbreviation_description>Trillium Compact, 120 s, 749 V/m/s-Taurus, 40 Vpp</abbreviation_description>
+      <abbreviation_description>null-Taurus, 40 Vpp (gain 0.4), 20 sps, low impeda</abbreviation_description>
     </generic_abbreviation>
     <generic_abbreviation blockette="033">
       <abbreviation_lookup_code>5</abbreviation_lookup_code>
-      <abbreviation_description>null-Taurus, 40 Vpp (gain 0.4), 40 sps, low impeda</abbreviation_description>
+      <abbreviation_description>Trillium Compact, 120 s, 749 V/m/s-Taurus, 40 Vpp</abbreviation_description>
     </generic_abbreviation>
     <generic_abbreviation blockette="033">
       <abbreviation_lookup_code>6</abbreviation_lookup_code>
-      <abbreviation_description>null-Taurus, 40 Vpp (gain 0.4), 100 sps, low imped</abbreviation_description>
+      <abbreviation_description>null-Taurus, 40 Vpp (gain 0.4), 40 sps, low impeda</abbreviation_description>
     </generic_abbreviation>
     <generic_abbreviation blockette="033">
       <abbreviation_lookup_code>7</abbreviation_lookup_code>
-      <abbreviation_description>null-Taurus, 40 Vpp (gain 0.4), 80 sps, low impeda</abbreviation_description>
+      <abbreviation_description>null-Taurus, 40 Vpp (gain 0.4), 100 sps, low imped</abbreviation_description>
     </generic_abbreviation>
     <generic_abbreviation blockette="033">
       <abbreviation_lookup_code>8</abbreviation_lookup_code>
-      <abbreviation_description>XX</abbreviation_description>
+      <abbreviation_description>null-Taurus, 40 Vpp (gain 0.4), 80 sps, low impeda</abbreviation_description>
     </generic_abbreviation>
     <generic_abbreviation blockette="033">
       <abbreviation_lookup_code>9</abbreviation_lookup_code>
-      <abbreviation_description>null-Taurus, 40 Vpp (gain 0.4), 50 sps, low impeda</abbreviation_description>
+      <abbreviation_description>XX</abbreviation_description>
     </generic_abbreviation>
     <generic_abbreviation blockette="033">
       <abbreviation_lookup_code>10</abbreviation_lookup_code>
+      <abbreviation_description>null-Taurus, 40 Vpp (gain 0.4), 50 sps, low impeda</abbreviation_description>
+    </generic_abbreviation>
+    <generic_abbreviation blockette="033">
+      <abbreviation_lookup_code>11</abbreviation_lookup_code>
       <abbreviation_description>Trillium Compact, 20 s, 753 V/m/s-Taurus, 40 Vpp (</abbreviation_description>
     </generic_abbreviation>
     <units_abbreviations blockette="034">
@@ -355,6 +359,268 @@
   </station_control_header>
   <station_control_header>
     <station_identifier blockette="050">
+      <station_call_letters>PAC</station_call_letters>
+      <latitude>+54.228800</latitude>
+      <longitude>-116.840000</longitude>
+      <elevation>+1077.3</elevation>
+      <number_of_channels>9</number_of_channels>
+      <number_of_station_comments>0</number_of_station_comments>
+      <site_name>PAC</site_name>
+      <network_identifier_code>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="1"]/parent::*</network_identifier_code>
+      <word_order_32bit>3210</word_order_32bit>
+      <word_order_16bit>10</word_order_16bit>
+      <start_effective_date>2015-07-10T00:00:00.000000Z</start_effective_date>
+      <end_effective_date></end_effective_date>
+      <update_flag>N</update_flag>
+      <network_code>CR</network_code>
+    </station_identifier>
+    <channel_identifier blockette="052">
+      <location_identifier></location_identifier>
+      <channel_identifier>BHE</channel_identifier>
+      <subchannel_identifier>0</subchannel_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <optional_comment>X</optional_comment>
+      <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
+      <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
+      <latitude>+54.228800</latitude>
+      <longitude>-116.840000</longitude>
+      <elevation>+1077.3</elevation>
+      <local_depth>0.0</local_depth>
+      <azimuth>90.0</azimuth>
+      <dip>+0.0</dip>
+      <data_format_identifier_code>/xseed/abbreviation_dictionary_control_header/data_format_dictionary/data_format_identifier_code[text()="1"]/parent::*</data_format_identifier_code>
+      <data_record_length>12</data_record_length>
+      <sample_rate>4.0000E+01</sample_rate>
+      <max_clock_drift>0.0000E+00</max_clock_drift>
+      <number_of_comments>0</number_of_comments>
+      <channel_flags>CG</channel_flags>
+      <start_date>2015-07-10T00:00:00.000000Z</start_date>
+      <end_date></end_date>
+      <update_flag>N</update_flag>
+    </channel_identifier>
+    <response_poles_and_zeros blockette="053">
+      <transfer_function_types>A</transfer_function_types>
+      <stage_sequence_number>1</stage_sequence_number>
+      <stage_signal_input_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</stage_signal_input_units>
+      <stage_signal_output_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="2"]/parent::*</stage_signal_output_units>
+      <A0_normalization_factor>+5.33876E+17</A0_normalization_factor>
+      <normalization_frequency>+1.00000E+00</normalization_frequency>
+      <number_of_complex_zeros>6</number_of_complex_zeros>
+      <complex_zero>
+        <real_zero>+0.00000E+00</real_zero>
+        <imaginary_zero>+0.00000E+00</imaginary_zero>
+        <real_zero_error>+0.00000E+00</real_zero_error>
+        <imaginary_zero_error>+0.00000E+00</imaginary_zero_error>
+        <real_zero>+0.00000E+00</real_zero>
+        <imaginary_zero>+0.00000E+00</imaginary_zero>
+        <real_zero_error>+0.00000E+00</real_zero_error>
+        <imaginary_zero_error>+0.00000E+00</imaginary_zero_error>
+        <real_zero>-7.25000E+01</real_zero>
+        <imaginary_zero>+0.00000E+00</imaginary_zero>
+        <real_zero_error>+0.00000E+00</real_zero_error>
+        <imaginary_zero_error>+0.00000E+00</imaginary_zero_error>
+        <real_zero>-1.63300E+02</real_zero>
+        <imaginary_zero>+0.00000E+00</imaginary_zero>
+        <real_zero_error>+0.00000E+00</real_zero_error>
+        <imaginary_zero_error>+0.00000E+00</imaginary_zero_error>
+        <real_zero>-2.51000E+02</real_zero>
+        <imaginary_zero>+0.00000E+00</imaginary_zero>
+        <real_zero_error>+0.00000E+00</real_zero_error>
+        <imaginary_zero_error>+0.00000E+00</imaginary_zero_error>
+        <real_zero>-3.27000E+03</real_zero>
+        <imaginary_zero>+0.00000E+00</imaginary_zero>
+        <real_zero_error>+0.00000E+00</real_zero_error>
+        <imaginary_zero_error>+0.00000E+00</imaginary_zero_error>
+      </complex_zero>
+      <number_of_complex_poles>11</number_of_complex_poles>
+      <complex_pole>
+        <real_pole>-1.81340E-02</real_pole>
+        <imaginary_pole>+1.80340E-02</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+        <real_pole>-1.81340E-02</real_pole>
+        <imaginary_pole>-1.80340E-02</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+        <real_pole>-8.44000E+01</real_pole>
+        <imaginary_pole>+0.00000E+00</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+        <real_pole>-1.80200E+02</real_pole>
+        <imaginary_pole>+2.24400E+02</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+        <real_pole>-1.80200E+02</real_pole>
+        <imaginary_pole>-2.24400E+02</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+        <real_pole>-7.25000E+02</real_pole>
+        <imaginary_pole>+0.00000E+00</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+        <real_pole>-1.06000E+03</real_pole>
+        <imaginary_pole>+0.00000E+00</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+        <real_pole>-4.30000E+03</real_pole>
+        <imaginary_pole>+0.00000E+00</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+        <real_pole>-5.80000E+03</real_pole>
+        <imaginary_pole>+0.00000E+00</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+        <real_pole>-4.20000E+03</real_pole>
+        <imaginary_pole>+4.60000E+03</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+        <real_pole>-4.20000E+03</real_pole>
+        <imaginary_pole>-4.60000E+03</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+      </complex_pole>
+    </response_poles_and_zeros>
+    <channel_sensitivity_gain blockette="058">
+      <stage_sequence_number>1</stage_sequence_number>
+      <sensitivity_gain>+1.19690E+03</sensitivity_gain>
+      <frequency>+1.00000E+00</frequency>
+      <number_of_history_values>0</number_of_history_values>
+      <history/>
+    </channel_sensitivity_gain>
+    <response_poles_and_zeros blockette="053">
+      <transfer_function_types>A</transfer_function_types>
+      <stage_sequence_number>2</stage_sequence_number>
+      <stage_signal_input_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="2"]/parent::*</stage_signal_input_units>
+      <stage_signal_output_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="2"]/parent::*</stage_signal_output_units>
+      <A0_normalization_factor>+1.33389E+04</A0_normalization_factor>
+      <normalization_frequency>+1.00000E+00</normalization_frequency>
+      <number_of_complex_zeros>0</number_of_complex_zeros>
+      <complex_zero/>
+      <number_of_complex_poles>1</number_of_complex_poles>
+      <complex_pole>
+        <real_pole>-1.33389E+04</real_pole>
+        <imaginary_pole>+0.00000E+00</imaginary_pole>
+        <real_pole_error>+0.00000E+00</real_pole_error>
+        <imaginary_pole_error>+0.00000E+00</imaginary_pole_error>
+      </complex_pole>
+    </response_poles_and_zeros>
+    <channel_sensitivity_gain blockette="058">
+      <stage_sequence_number>2</stage_sequence_number>
+      <sensitivity_gain>+3.99999E-01</sensitivity_gain>
+      <frequency>+1.00000E+00</frequency>
+      <number_of_history_values>0</number_of_history_values>
+      <history/>
+    </channel_sensitivity_gain>
+    <response_coefficients blockette="054">
+      <response_type>D</response_type>
+      <stage_sequence_number>3</stage_sequence_number>
+      <signal_input_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="2"]/parent::*</signal_input_units>
+      <signal_output_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="3"]/parent::*</signal_output_units>
+      <number_of_numerators>1</number_of_numerators>
+      <numerators>+1.00000E+00 +0.00000E+00</numerators>
+      <number_of_denominators>0</number_of_denominators>
+      <denominators></denominators>
+    </response_coefficients>
+    <decimation blockette="057">
+      <stage_sequence_number>3</stage_sequence_number>
+      <input_sample_rate>3.0000E+04</input_sample_rate>
+      <decimation_factor>1</decimation_factor>
+      <decimation_offset>0</decimation_offset>
+      <estimated_delay>+0.0000E+00</estimated_delay>
+      <correction_applied>+0.0000E+00</correction_applied>
+    </decimation>
+    <channel_sensitivity_gain blockette="058">
+      <stage_sequence_number>3</stage_sequence_number>
+      <sensitivity_gain>+1.00000E+06</sensitivity_gain>
+      <frequency>+1.00000E+00</frequency>
+      <number_of_history_values>0</number_of_history_values>
+      <history/>
+    </channel_sensitivity_gain>
+    <response_coefficients blockette="054">
+      <response_type>D</response_type>
+      <stage_sequence_number>4</stage_sequence_number>
+      <signal_input_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="3"]/parent::*</signal_input_units>
+      <signal_output_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="3"]/parent::*</signal_output_units>
+      <number_of_numerators>165</number_of_numerators>
+      <numerators>-4.04791E-10 +0.00000E+00 -1.39029E-10 +0.00000E+00 +6.72800E-10 +0.00000E+00 +2.75797E-09 +0.00000E+00 +7.54651E-09 +0.00000E+00 +1.76668E-08 +0.00000E+00 +3.76936E-08 +0.00000E+00 +7.52313E-08 +0.00000E+00 +1.42425E-07 +0.00000E+00 +2.57999E-07 +0.00000E+00 +4.49904E-07 +0.00000E+00 +7.58655E-07 +0.00000E+00 +1.24139E-06 +0.00000E+00 +1.97658E-06 +0.00000E+00 +3.06939E-06 +0.00000E+00 +4.65728E-06 +0.00000E+00 +6.91569E-06 +0.00000E+00 +1.00631E-05 +0.00000E+00 +1.43649E-05 +0.00000E+00 +2.01350E-05 +0.00000E+00 +2.77346E-05 +0.00000E+00 +3.75661E-05 +0.00000E+00 +5.00617E-05 +0.00000E+00 +6.56652E-05 +0.00000E+00 +8.48049E-05 +0.00000E+00 +1.07859E-04 +0.00000E+00 +1.35108E-04 +0.00000E+00 +1.66685E-04 +0.00000E+00 +2.02505E-04 +0.00000E+00 +2.42200E-04 +0.00000E+00 +2.85038E-04 +0.00000E+00 +3.29850E-04 +0.00000E+00 +3.74956E-04 +0.00000E+00 +4.18099E-04 +0.00000E+00 +4.56400E-04 +0.00000E+00 +4.86339E-04 +0.00000E+00 +5.03757E-04 +0.00000E+00 +5.03913E-04 +0.00000E+00 +4.81580E-04 +0.00000E+00 +4.31195E-04 +0.00000E+00 +3.47068E-04 +0.00000E+00 +2.23655E-04 +0.00000E+00 +5.58818E-05 +0.00000E+00 -1.60476E-04 +0.00000E+00 -4.28365E-04 +0.00000E+00 -7.49008E-04 +0.00000E+00 -1.12143E-03 +0.00000E+00 -1.54201E-03 +0.00000E+00 -2.00406E-03 +0.00000E+00 -2.49746E-03 +0.00000E+00 -3.00841E-03 +0.00000E+00 -3.51925E-03 +0.00000E+00 -4.00852E-03 +0.00000E+00 -4.45107E-03 +0.00000E+00 -4.81847E-03 +0.00000E+00 -5.07953E-03 +0.00000E+00 -5.20107E-03 +0.00000E+00 -5.14889E-03 +0.00000E+00 -4.88884E-03 +0.00000E+00 -4.38813E-03 +0.00000E+00 -3.61664E-03 +0.00000E+00 -2.54840E-03 +0.00000E+00 -1.16293E-03 +0.00000E+00 +5.53350E-04 +0.00000E+00 +2.60595E-03 +0.00000E+00 +4.99129E-03 +0.00000E+00 +7.69592E-03 +0.00000E+00 +1.06961E-02 +0.00000E+00 +1.39576E-02 +0.00000E+00 +1.74363E-02 +0.00000E+00 +2.10783E-02 +0.00000E+00 +2.48217E-02 +0.00000E+00 +2.85976E-02 +0.00000E+00 +3.23318E-02 +0.00000E+00 +3.59474E-02 +0.00000E+00 +3.93664E-02 +0.00000E+00 +4.25127E-02 +0.00000E+00 +4.53141E-02 +0.00000E+00 +4.77047E-02 +0.00000E+00 +4.96275E-02 +0.00000E+00 +5.10356E-02 +0.00000E+00 +5.18947E-02 +0.00000E+00 +5.21834E-02 +0.00000E+00 +5.18947E-02 +0.00000E+00 +5.10356E-02 +0.00000E+00 +4.96275E-02 +0.00000E+00 +4.77047E-02 +0.00000E+00 +4.53141E-02 +0.00000E+00 +4.25127E-02 +0.00000E+00 +3.93664E-02 +0.00000E+00 +3.59474E-02 +0.00000E+00 +3.23318E-02 +0.00000E+00 +2.85976E-02 +0.00000E+00 +2.48217E-02 +0.00000E+00 +2.10783E-02 +0.00000E+00 +1.74363E-02 +0.00000E+00 +1.39576E-02 +0.00000E+00 +1.06961E-02 +0.00000E+00 +7.69592E-03 +0.00000E+00 +4.99129E-03 +0.00000E+00 +2.60595E-03 +0.00000E+00 +5.53350E-04 +0.00000E+00 -1.16293E-03 +0.00000E+00 -2.54840E-03 +0.00000E+00 -3.61664E-03 +0.00000E+00 -4.38813E-03 +0.00000E+00 -4.88884E-03 +0.00000E+00 -5.14889E-03 +0.00000E+00 -5.20107E-03 +0.00000E+00 -5.07953E-03 +0.00000E+00 -4.81847E-03 +0.00000E+00 -4.45107E-03 +0.00000E+00 -4.00852E-03 +0.00000E+00 -3.51925E-03 +0.00000E+00 -3.00841E-03 +0.00000E+00 -2.49746E-03 +0.00000E+00 -2.00406E-03 +0.00000E+00 -1.54201E-03 +0.00000E+00 -1.12143E-03 +0.00000E+00 -7.49008E-04 +0.00000E+00 -4.28365E-04 +0.00000E+00 -1.60476E-04 +0.00000E+00 +5.58818E-05 +0.00000E+00 +2.23655E-04 +0.00000E+00 +3.47068E-04 +0.00000E+00 +4.31195E-04 +0.00000E+00 +4.81580E-04 +0.00000E+00 +5.03913E-04 +0.00000E+00 +5.03757E-04 +0.00000E+00 +4.86339E-04 +0.00000E+00 +4.56400E-04 +0.00000E+00 +4.18099E-04 +0.00000E+00 +3.74956E-04 +0.00000E+00 +3.29850E-04 +0.00000E+00 +2.85038E-04 +0.00000E+00 +2.42200E-04 +0.00000E+00 +2.02505E-04 +0.00000E+00 +1.66685E-04 +0.00000E+00 +1.35108E-04 +0.00000E+00 +1.07859E-04 +0.00000E+00 +8.48049E-05 +0.00000E+00 +6.56652E-05 +0.00000E+00 +5.00617E-05 +0.00000E+00 +3.75661E-05 +0.00000E+00 +2.77346E-05 +0.00000E+00 +2.01350E-05 +0.00000E+00 +1.43649E-05 +0.00000E+00 +1.00631E-05 +0.00000E+00 +6.91569E-06 +0.00000E+00 +4.65728E-06 +0.00000E+00 +3.06939E-06 +0.00000E+00 +1.97658E-06 +0.00000E+00 +1.24139E-06 +0.00000E+00 +7.58655E-07 +0.00000E+00 +4.49904E-07 +0.00000E+00 +2.57999E-07 +0.00000E+00 +1.42425E-07 +0.00000E+00 +7.52313E-08 +0.00000E+00 +3.76936E-08 +0.00000E+00 +1.76668E-08 +0.00000E+00 +7.54651E-09 +0.00000E+00 +2.75797E-09 +0.00000E+00 +6.72800E-10 +0.00000E+00 -1.39029E-10 +0.00000E+00 -4.04791E-10 +0.00000E+00</numerators>
+      <number_of_denominators>0</number_of_denominators>
+      <denominators></denominators>
+    </response_coefficients>
+    <decimation blockette="057">
+      <stage_sequence_number>4</stage_sequence_number>
+      <input_sample_rate>3.0000E+04</input_sample_rate>
+      <decimation_factor>15</decimation_factor>
+      <decimation_offset>0</decimation_offset>
+      <estimated_delay>+2.7333E-03</estimated_delay>
+      <correction_applied>+2.7333E-03</correction_applied>
+    </decimation>
+    <channel_sensitivity_gain blockette="058">
+      <stage_sequence_number>4</stage_sequence_number>
+      <sensitivity_gain>+1.00000E+00</sensitivity_gain>
+      <frequency>+1.00000E+00</frequency>
+      <number_of_history_values>0</number_of_history_values>
+      <history/>
+    </channel_sensitivity_gain>
+    <response_coefficients blockette="054">
+      <response_type>D</response_type>
+      <stage_sequence_number>5</stage_sequence_number>
+      <signal_input_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="3"]/parent::*</signal_input_units>
+      <signal_output_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="3"]/parent::*</signal_output_units>
+      <number_of_numerators>187</number_of_numerators>
+      <numerators>+8.46923E-10 +0.00000E+00 +2.27422E-09 +0.00000E+00 +4.53895E-09 +0.00000E+00 +6.87379E-09 +0.00000E+00 +7.10904E-09 +0.00000E+00 +7.62784E-10 +0.00000E+00 -1.98301E-08 +0.00000E+00 -6.60994E-08 +0.00000E+00 -1.53114E-07 +0.00000E+00 -2.98249E-07 +0.00000E+00 -5.18152E-07 +0.00000E+00 -8.23636E-07 +0.00000E+00 -1.21248E-06 +0.00000E+00 -1.66055E-06 +0.00000E+00 -2.11247E-06 +0.00000E+00 -2.47353E-06 +0.00000E+00 -2.60562E-06 +0.00000E+00 -2.33013E-06 +0.00000E+00 -1.44098E-06 +0.00000E+00 +2.69804E-07 +0.00000E+00 +2.97271E-06 +0.00000E+00 +6.74886E-06 +0.00000E+00 +1.15296E-05 +0.00000E+00 +1.70354E-05 +0.00000E+00 +2.27248E-05 +0.00000E+00 +2.77670E-05 +0.00000E+00 +3.10537E-05 +0.00000E+00 +3.12630E-05 +0.00000E+00 +2.69861E-05 +0.00000E+00 +1.69189E-05 +0.00000E+00 +1.11176E-07 +0.00000E+00 -2.37456E-05 +0.00000E+00 -5.40267E-05 +0.00000E+00 -8.89227E-05 +0.00000E+00 -1.25282E-04 +0.00000E+00 -1.58604E-04 +0.00000E+00 -1.83236E-04 +0.00000E+00 -1.92798E-04 +0.00000E+00 -1.80864E-04 +0.00000E+00 -1.41850E-04 +0.00000E+00 -7.20670E-05 +0.00000E+00 +2.91938E-05 +0.00000E+00 +1.58665E-04 +0.00000E+00 +3.08386E-04 +0.00000E+00 +4.65422E-04 +0.00000E+00 +6.12198E-04 +0.00000E+00 +7.27547E-04 +0.00000E+00 +7.88512E-04 +0.00000E+00 +7.72858E-04 +0.00000E+00 +6.62123E-04 +0.00000E+00 +4.44926E-04 +0.00000E+00 +1.20161E-04 +0.00000E+00 -3.00369E-04 +0.00000E+00 -7.90361E-04 +0.00000E+00 -1.30887E-03 +0.00000E+00 -1.80202E-03 +0.00000E+00 -2.20662E-03 +0.00000E+00 -2.45579E-03 +0.00000E+00 -2.48619E-03 +0.00000E+00 -2.24631E-03 +0.00000E+00 -1.70503E-03 +0.00000E+00 -8.59463E-04 +0.00000E+00 +2.59011E-04 +0.00000E+00 +1.58157E-03 +0.00000E+00 +3.00250E-03 +0.00000E+00 +4.38414E-03 +0.00000E+00 +5.56632E-03 +0.00000E+00 +6.38000E-03 +0.00000E+00 +6.66440E-03 +0.00000E+00 +6.28604E-03 +0.00000E+00 +5.15814E-03 +0.00000E+00 +3.25820E-03 +0.00000E+00 +6.41682E-04 +0.00000E+00 -2.55018E-03 +0.00000E+00 -6.09006E-03 +0.00000E+00 -9.67270E-03 +0.00000E+00 -1.29317E-02 +0.00000E+00 -1.54642E-02 +0.00000E+00 -1.68626E-02 +0.00000E+00 -1.67490E-02 +0.00000E+00 -1.48125E-02 +0.00000E+00 -1.08426E-02 +0.00000E+00 -4.75778E-03 +0.00000E+00 +3.37489E-03 +0.00000E+00 +1.33318E-02 +0.00000E+00 +2.47374E-02 +0.00000E+00 +3.70816E-02 +0.00000E+00 +4.97507E-02 +0.00000E+00 +6.20670E-02 +0.00000E+00 +7.33368E-02 +0.00000E+00 +8.29015E-02 +0.00000E+00 +9.01866E-02 +0.00000E+00 +9.47464E-02 +0.00000E+00 +9.62985E-02 +0.00000E+00 +9.47464E-02 +0.00000E+00 +9.01866E-02 +0.00000E+00 +8.29015E-02 +0.00000E+00 +7.33368E-02 +0.00000E+00 +6.20670E-02 +0.00000E+00 +4.97507E-02 +0.00000E+00 +3.70816E-02 +0.00000E+00 +2.47374E-02 +0.00000E+00 +1.33318E-02 +0.00000E+00 +3.37489E-03 +0.00000E+00 -4.75778E-03 +0.00000E+00 -1.08426E-02 +0.00000E+00 -1.48125E-02 +0.00000E+00 -1.67490E-02 +0.00000E+00 -1.68626E-02 +0.00000E+00 -1.54642E-02 +0.00000E+00 -1.29317E-02 +0.00000E+00 -9.67270E-03 +0.00000E+00 -6.09006E-03 +0.00000E+00 -2.55018E-03 +0.00000E+00 +6.41682E-04 +0.00000E+00 +3.25820E-03 +0.00000E+00 +5.15814E-03 +0.00000E+00 +6.28604E-03 +0.00000E+00 +6.66440E-03 +0.00000E+00 +6.38000E-03 +0.00000E+00 +5.56632E-03 +0.00000E+00 +4.38414E-03 +0.00000E+00 +3.00250E-03 +0.00000E+00 +1.58157E-03 +0.00000E+00 +2.59011E-04 +0.00000E+00 -8.59463E-04 +0.00000E+00 -1.70503E-03 +0.00000E+00 -2.24631E-03 +0.00000E+00 -2.48619E-03 +0.00000E+00 -2.45579E-03 +0.00000E+00 -2.20662E-03 +0.00000E+00 -1.80202E-03 +0.00000E+00 -1.30887E-03 +0.00000E+00 -7.90361E-04 +0.00000E+00 -3.00369E-04 +0.00000E+00 +1.20161E-04 +0.00000E+00 +4.44926E-04 +0.00000E+00 +6.62123E-04 +0.00000E+00 +7.72858E-04 +0.00000E+00 +7.88512E-04 +0.00000E+00 +7.27547E-04 +0.00000E+00 +6.12198E-04 +0.00000E+00 +4.65422E-04 +0.00000E+00 +3.08386E-04 +0.00000E+00 +1.58665E-04 +0.00000E+00 +2.91938E-05 +0.00000E+00 -7.20670E-05 +0.00000E+00 -1.41850E-04 +0.00000E+00 -1.80864E-04 +0.00000E+00 -1.92798E-04 +0.00000E+00 -1.83236E-04 +0.00000E+00 -1.58604E-04 +0.00000E+00 -1.25282E-04 +0.00000E+00 -8.89227E-05 +0.00000E+00 -5.40267E-05 +0.00000E+00 -2.37456E-05 +0.00000E+00 +1.11176E-07 +0.00000E+00 +1.69189E-05 +0.00000E+00 +2.69861E-05 +0.00000E+00 +3.12630E-05 +0.00000E+00 +3.10537E-05 +0.00000E+00 +2.77670E-05 +0.00000E+00 +2.27248E-05 +0.00000E+00 +1.70354E-05 +0.00000E+00 +1.15296E-05 +0.00000E+00 +6.74886E-06 +0.00000E+00 +2.97271E-06 +0.00000E+00 +2.69804E-07 +0.00000E+00 -1.44098E-06 +0.00000E+00 -2.33013E-06 +0.00000E+00 -2.60562E-06 +0.00000E+00 -2.47353E-06 +0.00000E+00 -2.11247E-06 +0.00000E+00 -1.66055E-06 +0.00000E+00 -1.21248E-06 +0.00000E+00 -8.23636E-07 +0.00000E+00 -5.18152E-07 +0.00000E+00 -2.98249E-07 +0.00000E+00 -1.53114E-07 +0.00000E+00 -6.60994E-08 +0.00000E+00 -1.98301E-08 +0.00000E+00 +7.62784E-10 +0.00000E+00 +7.10904E-09 +0.00000E+00 +6.87379E-09 +0.00000E+00 +4.53895E-09 +0.00000E+00 +2.27422E-09 +0.00000E+00 +8.46923E-10 +0.00000E+00</numerators>
+      <number_of_denominators>0</number_of_denominators>
+      <denominators></denominators>
+    </response_coefficients>
+    <decimation blockette="057">
+      <stage_sequence_number>5</stage_sequence_number>
+      <input_sample_rate>2.0000E+03</input_sample_rate>
+      <decimation_factor>10</decimation_factor>
+      <decimation_offset>0</decimation_offset>
+      <estimated_delay>+4.6500E-02</estimated_delay>
+      <correction_applied>+4.6500E-02</correction_applied>
+    </decimation>
+    <channel_sensitivity_gain blockette="058">
+      <stage_sequence_number>5</stage_sequence_number>
+      <sensitivity_gain>+1.00000E+00</sensitivity_gain>
+      <frequency>+1.00000E+00</frequency>
+      <number_of_history_values>0</number_of_history_values>
+      <history/>
+    </channel_sensitivity_gain>
+    <response_coefficients blockette="054">
+      <response_type>D</response_type>
+      <stage_sequence_number>6</stage_sequence_number>
+      <signal_input_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="3"]/parent::*</signal_input_units>
+      <signal_output_units>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="3"]/parent::*</signal_output_units>
+      <number_of_numerators>223</number_of_numerators>
+      <numerators>-2.48770E-10 +0.00000E+00 +4.73744E-09 +0.00000E+00 +1.24032E-08 +0.00000E+00 +2.18423E-09 +0.00000E+00 -2.97350E-08 +0.00000E+00 -2.77410E-08 +0.00000E+00 +4.82350E-08 +0.00000E+00 +9.04852E-08 +0.00000E+00 -4.37720E-08 +0.00000E+00 -2.02925E-07 +0.00000E+00 -2.93251E-08 +0.00000E+00 +3.57677E-07 +0.00000E+00 +2.38076E-07 +0.00000E+00 -5.05054E-07 +0.00000E+00 -6.56661E-07 +0.00000E+00 +5.29514E-07 +0.00000E+00 +1.33303E-06 +0.00000E+00 -2.35391E-07 +0.00000E+00 -2.23456E-06 +0.00000E+00 -6.43189E-07 +0.00000E+00 +3.17885E-06 +0.00000E+00 +2.39189E-06 +0.00000E+00 -3.76643E-06 +0.00000E+00 -5.21313E-06 +0.00000E+00 +3.34388E-06 +0.00000E+00 +9.06984E-06 +0.00000E+00 -1.03420E-06 +0.00000E+00 -1.34948E-05 +0.00000E+00 -4.12820E-06 +0.00000E+00 +1.74081E-05 +0.00000E+00 +1.29325E-05 +0.00000E+00 -1.90112E-05 +0.00000E+00 -2.55982E-05 +0.00000E+00 +1.58385E-05 +0.00000E+00 +4.12985E-05 +0.00000E+00 -5.05136E-06 +0.00000E+00 -5.76943E-05 +0.00000E+00 -1.59734E-05 +0.00000E+00 +7.06232E-05 +0.00000E+00 +4.87621E-05 +0.00000E+00 -7.41183E-05 +0.00000E+00 -9.26560E-05 +0.00000E+00 +6.09281E-05 +0.00000E+00 +1.43704E-04 +0.00000E+00 -2.36571E-05 +0.00000E+00 -1.93818E-04 +0.00000E+00 -4.34607E-05 +0.00000E+00 +2.30529E-04 +0.00000E+00 +1.42300E-04 +0.00000E+00 -2.37697E-04 +0.00000E+00 -2.68420E-04 +0.00000E+00 +1.97420E-04 +0.00000E+00 +4.08986E-04 +0.00000E+00 -9.32264E-05 +0.00000E+00 -5.41667E-04 +0.00000E+00 -8.56506E-05 +0.00000E+00 +6.35146E-04 +0.00000E+00 +3.39424E-04 +0.00000E+00 -6.51794E-04 +0.00000E+00 -6.53162E-04 +0.00000E+00 +5.52734E-04 +0.00000E+00 +9.93533E-04 +0.00000E+00 -3.05133E-04 +0.00000E+00 -1.30802E-03 +0.00000E+00 -1.08987E-04 +0.00000E+00 +1.52764E-03 +0.00000E+00 +6.83646E-04 +0.00000E+00 -1.57381E-03 +0.00000E+00 -1.38119E-03 +0.00000E+00 +1.36932E-03 +0.00000E+00 +2.12784E-03 +0.00000E+00 -8.52739E-04 +0.00000E+00 -2.81433E-03 +0.00000E+00 -5.43598E-06 +0.00000E+00 +3.30293E-03 +0.00000E+00 +1.18724E-03 +0.00000E+00 -3.44149E-03 +0.00000E+00 -2.61502E-03 +0.00000E+00 +3.08386E-03 +0.00000E+00 +4.14554E-03 +0.00000E+00 -2.11493E-03 +0.00000E+00 -5.57267E-03 +0.00000E+00 +4.77543E-04 +0.00000E+00 +6.64017E-03 +0.00000E+00 +1.80254E-03 +0.00000E+00 -7.06464E-03 +0.00000E+00 -4.59738E-03 +0.00000E+00 +6.56694E-03 +0.00000E+00 +7.66690E-03 +0.00000E+00 -4.90895E-03 +0.00000E+00 -1.06603E-02 +0.00000E+00 +1.93106E-03 +0.00000E+00 +1.31289E-02 +0.00000E+00 +2.41487E-03 +0.00000E+00 -1.45476E-02 +0.00000E+00 -8.04248E-03 +0.00000E+00 +1.43373E-02 +0.00000E+00 +1.47221E-02 +0.00000E+00 -1.18736E-02 +0.00000E+00 -2.20889E-02 +0.00000E+00 +6.45106E-03 +0.00000E+00 +2.96694E-02 +0.00000E+00 +2.87172E-03 +0.00000E+00 -3.69222E-02 +0.00000E+00 -1.77763E-02 +0.00000E+00 +4.32915E-02 +0.00000E+00 +4.24836E-02 +0.00000E+00 -4.82648E-02 +0.00000E+00 -9.28087E-02 +0.00000E+00 +5.14286E-02 +0.00000E+00 +3.13777E-01 +0.00000E+00 +4.47486E-01 +0.00000E+00 +3.13777E-01 +0.00000E+00 +5.14286E-02 +0.00000E+00 -9.28087E-02 +0.00000E+00 -4.82648E-02 +0.00000E+00 +4.24836E-02 +0.00000E+00 +4.32915E-02 +0.00000E+00 -1.77763E-02 +0.00000E+00 -3.69222E-02 +0.00000E+00 +2.87172E-03 +0.00000E+00 +2.96694E-02 +0.00000E+00 +6.45106E-03 +0.00000E+00 -2.20889E-02 +0.00000E+00 -1.18736E-02 +0.00000E+00 +1.47221E-02 +0.00000E+00 +1.43373E-02 +0.00000E+00 -8.04248E-03 +0.00000E+00 -1.45476E-02 +0.00000E+00 +2.41487E-03 +0.00000E+00 +1.31289E-02 +0.00000E+00 +1.93106E-03 +0.00000E+00 -1.06603E-02 +0.00000E+00 -4.90895E-03 +0.00000E+00 +7.66690E-03 +0.00000E+00 +6.56694E-03 +0.00000E+00 -4.59738E-03 +0.00000E+00 -7.06464E-03 +0.00000E+00 +1.80254E-03 +0.00000E+00 +6.64017E-03 +0.00000E+00 +4.77543E-04 +0.00000E+00 -5.57267E-03 +0.00000E+00 -2.11493E-03 +0.00000E+00 +4.14554E-03 +0.00000E+00 +3.08386E-03 +0.00000E+00 -2.61502E-03 +0.00000E+00 -3.44149E-03 +0.00000E+00 +1.18724E-03 +0.00000E+00 +3.30293E-03 +0.00000E+00 -5.43598E-06 +0.00000E+00 -2.81433E-03 +0.00000E+00 -8.52739E-04 +0.00000E+00 +2.12784E-03 +0.00000E+00 +1.36932E-03 +0.00000E+00 -1.38119E-03 +0.00000E+00 -1.57381E-03 +0.00000E+00 +6.83646E-04 +0.00000E+00 +1.52764E-03 +0.00000E+00 -1.08987E-04 +0.00000E+00 -1.30802E-03 +0.00000E+00 -3.05133E-04 +0.00000E+00 +9.93533E-04 +0.00000E+00 +5.52734E-04 +0.00000E+00 -6.53162E-04 +0.00000E+00 -6.51794E-04 +0.00000E+00 +3.39424E-04 +0.00000E+00 +6.35146E-04 +0.00000E+00 -8.56506E-05 +0.00000E+00 -5.41667E-04 +0.00000E+00 -9.32264E-05 +0.00000E+00 +4.08986E-04 +0.00000E+00 +1.97420E-04 +0.00000E+00 -2.68420E-04 +0.00000E+00 -2.37697E-04 +0.00000E+00 +1.42300E-04 +0.00000E+00 +2.30529E-04 +0.00000E+00 -4.34607E-05 +0.00000E+00 -1.93818E-04 +0.00000E+00 -2.36571E-05 +0.00000E+00 +1.43704E-04 +0.00000E+00 +6.09281E-05 +0.00000E+00 -9.26560E-05 +0.00000E+00 -7.41183E-05 +0.00000E+00 +4.87621E-05 +0.00000E+00 +7.06232E-05 +0.00000E+00 -1.59734E-05 +0.00000E+00 -5.76943E-05 +0.00000E+00 -5.05136E-06 +0.00000E+00 +4.12985E-05 +0.00000E+00 +1.58385E-05 +0.00000E+00 -2.55982E-05 +0.00000E+00 -1.90112E-05 +0.00000E+00 +1.29325E-05 +0.00000E+00 +1.74081E-05 +0.00000E+00 -4.12820E-06 +0.00000E+00 -1.34948E-05 +0.00000E+00 -1.03420E-06 +0.00000E+00 +9.06984E-06 +0.00000E+00 +3.34388E-06 +0.00000E+00 -5.21313E-06 +0.00000E+00 -3.76643E-06 +0.00000E+00 +2.39189E-06 +0.00000E+00 +3.17885E-06 +0.00000E+00 -6.43189E-07 +0.00000E+00 -2.23456E-06 +0.00000E+00 -2.35391E-07 +0.00000E+00 +1.33303E-06 +0.00000E+00 +5.29514E-07 +0.00000E+00 -6.56661E-07 +0.00000E+00 -5.05054E-07 +0.00000E+00 +2.38076E-07 +0.00000E+00 +3.57677E-07 +0.00000E+00 -2.93251E-08 +0.00000E+00 -2.02925E-07 +0.00000E+00 -4.37720E-08 +0.00000E+00 +9.04852E-08 +0.00000E+00 +4.82350E-08 +0.00000E+00 -2.77410E-08 +0.00000E+00 -2.97350E-08 +0.00000E+00 +2.18423E-09 +0.00000E+00 +1.24032E-08 +0.00000E+00 +4.73744E-09 +0.00000E+00 -2.48770E-10 +0.00000E+00</numerators>
+      <number_of_denominators>0</number_of_denominators>
+      <denominators></denominators>
+    </response_coefficients>
+    <decimation blockette="057">
+      <stage_sequence_number>6</stage_sequence_number>
+      <input_sample_rate>2.0000E+02</input_sample_rate>
+      <decimation_factor>2</decimation_factor>
+      <decimation_offset>0</decimation_offset>
+      <estimated_delay>+5.5500E-01</estimated_delay>
+      <correction_applied>+5.5500E-01</correction_applied>
+    </decimation>
+    <channel_sensitivity_gain blockette="058">
+      <stage_sequence_number>6</stage_sequence_number>
+      <sensitivity_gain>+1.00000E+00</sensitivity_gain>
+      <frequency>+1.00000E+00</frequency>
+      <number_of_history_values>0</number_of_history_values>
+      <history/>
+    </channel_sensitivity_gain>
+    <channel_sensitivity_gain blockette="058">
+      <stage_sequence_number>0</stage_sequence_number>
+      <sensitivity_gain>+4.78759E+08</sensitivity_gain>
+      <frequency>+1.00000E+00</frequency>
+      <number_of_history_values>0</number_of_history_values>
+      <history/>
+    </channel_sensitivity_gain>
+  </station_control_header>
+  <station_control_header>
+    <station_identifier blockette="050">
       <station_call_letters>BRU</station_call_letters>
       <latitude>+53.320000</latitude>
       <longitude>-117.870000</longitude>
@@ -374,7 +640,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -641,7 +907,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -882,7 +1148,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -1149,7 +1415,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -1398,7 +1664,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -1640,7 +1906,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -1907,7 +2173,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -2156,7 +2422,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -2405,7 +2671,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="8"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -2639,7 +2905,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -2881,7 +3147,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -3639,7 +3905,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -3898,7 +4164,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -4153,7 +4419,7 @@
       <number_of_channels>9</number_of_channels>
       <number_of_station_comments>0</number_of_station_comments>
       <site_name>HYO</site_name>
-      <network_identifier_code>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="8"]/parent::*</network_identifier_code>
+      <network_identifier_code>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="9"]/parent::*</network_identifier_code>
       <word_order_32bit>3210</word_order_32bit>
       <word_order_16bit>10</word_order_16bit>
       <start_effective_date>2009-05-07T00:00:00.000000Z</start_effective_date>
@@ -4165,7 +4431,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -4414,7 +4680,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="9"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="10"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -4638,7 +4904,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -4887,7 +5153,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="8"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -5121,7 +5387,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -5363,7 +5629,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -5612,7 +5878,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -5861,7 +6127,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="8"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -6095,7 +6361,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -6337,7 +6603,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -6604,7 +6870,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -6853,7 +7119,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -7102,7 +7368,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="8"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -7336,7 +7602,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -7578,7 +7844,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -7837,7 +8103,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="10"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="11"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -8832,7 +9098,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -9081,7 +9347,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -9330,7 +9596,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -9572,7 +9838,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -9821,7 +10087,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -10063,7 +10329,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -10312,7 +10578,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -10554,7 +10820,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="3"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -10821,7 +11087,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="9"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="10"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -11063,7 +11329,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="9"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="10"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -11287,7 +11553,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="8"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -11521,7 +11787,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -11763,7 +12029,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="9"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="10"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -12005,7 +12271,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="9"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="10"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -12229,7 +12495,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="8"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -12463,7 +12729,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -12705,7 +12971,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="9"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="10"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -12929,7 +13195,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="8"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -13163,7 +13429,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="7"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -13405,7 +13671,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="4"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
@@ -13664,7 +13930,7 @@
       <location_identifier></location_identifier>
       <channel_identifier>BHE</channel_identifier>
       <subchannel_identifier>0</subchannel_identifier>
-      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="5"]/parent::*</instrument_identifier>
+      <instrument_identifier>/xseed/abbreviation_dictionary_control_header/generic_abbreviation/abbreviation_lookup_code[text()="6"]/parent::*</instrument_identifier>
       <optional_comment>X</optional_comment>
       <units_of_signal_response>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="1"]/parent::*</units_of_signal_response>
       <units_of_calibration_input>/xseed/abbreviation_dictionary_control_header/units_abbreviations/unit_lookup_code[text()="0"]/parent::*</units_of_calibration_input>
