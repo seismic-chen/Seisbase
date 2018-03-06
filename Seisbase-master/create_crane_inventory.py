@@ -17,6 +17,9 @@ from obspy import read
 from obspy.io.xseed import Parser
 from obspy import read_inventory
 import matplotlib.pyplot as plt
+from par import Parfile
+
+parfile=Parfile()
 
 #inv = Inventory(networks=[], 
 #                source="Global Seismology Group, University of Alberta")
@@ -91,6 +94,16 @@ MCL[0].channels = channel_tmp
 network.stations.append(MCL[0])
 inv.networks[0] = network
 inv.write("CRANE.xml",format="STATIONXML")
+
+# save individual stationxml file
+stationxml_directory=parfile.stationxml_directory
+
+for n in range(0,len(inv.networks[0])):
+    network_code=inv.networks[0].code
+    station_code=inv.networks[0].stations[n].code
+    inv_tmp = inv.select(station=station_code)
+    filename=stationxml_directory+network_code+'.'+station_code+'.xml'
+    inv_tmp.write(filename,format="STATIONXML")
 # inv1.plot(projection='local')
 #cha1 = inv1[0].stations[0].channels[0]
 #cha1.response.plot(min_freq=0.01,output='VEL')
