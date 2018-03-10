@@ -160,21 +160,20 @@ class Station(object):
         """
         # prepare date string list
         time_string_list = list()
+        seed_list = list()
         missing_date = list()
-        yday_list = list()
-        year_list = list()
+
         for n in range(0,len(self.seeds)):
             tmp_time_string = self.seeds[n].time
             time_string_list.append(tmp_time_string.datetime)
-            year_list.append(tmp_time_string.timetuple().tm_year)
-            yday_list.append(tmp_time_string.timetuple().tm_yday)    
+ 
         # obtain the station operation period from stationxml file
         self.get_inventory()
-        network = self.dataless
+        station = self.dataless
         if start_date is None:
-            start_date=network[0][0].start_date
+            start_date=station.start_date
         if end_date is None:
-            end_date=network[0][0].end_date
+            end_date=station.end_date
         self.start_date=start_date
         self.end_date=end_date
         duration=end_date.datetime-start_date.datetime
@@ -182,22 +181,31 @@ class Station(object):
         base = start_date
         numdays=duration.days
         datelist = [start_date + datetime.timedelta(days=x) for x in range(0, numdays)]
-        
-        if time_string_list:
-            if network[0][0].end_date:
-                warnings.warn('Station start date is not defined')
-                if min(time_string_list) < network[0][0].start_date:
-                    warnings.warn('Data begins before the first day of the station')
-            if network[0][0].end_date:
-                warnings.warn('Station end date is not defined')
-                if  max(time_string_list) > network[0][0].end_date:
-                    warnings.warn('Data ends after the last day of the station')
                 
-        data_percentage=len(self.seeds)/float(duration.days)*100.
+        if time_string_list:
+            if not station.start_date:
+                warnings.warn('Station start date is not defined')
+                station.start_date = UTCDateTime(0,0,0,0,0,0)
+            else:
+                if min(time_string_list) < station.start_date:
+                    warnings.warn('Data begins before the first day of the station')
+            if not station.end_date:
+                warnings.warn('Station end date is not defined')
+                station.end_date = UTCDateTime(2599,12,31,23,59,59)
+            else:
+                if  max(time_string_list) >station.end_date:
+                    warnings.warn('Data ends after the last day of the station')
+                    
+        # keep the seeds in the given time period
+        seed_list = [x for x in self.seeds if x.time>start_date and x.time<end_date]
+        data_percentage=len(seed_list)/float(duration.days)*100.
         self.data_perentage=data_percentage
+
         # output the missing date to file
         if output_to_file:
-            f=open('{0:s}_missing_data.txt'.format(self.code),'w')
+            f=open('{0:s}_{1:s}_missing_data.txt'.format(self.network_code, self.code),'w')
+            f.write("Station start date: {0:%Y/%m/%d %H:%M:%S.%f}\n".format(station.start_date.datetime))
+            f.write('Station end date: {0:%Y/%m/%d %H:%M:%S.%f}\n'.format(station.end_date.datetime))
             f.write("Start date: {0:%Y/%m/%d %H:%M:%S.%f}\n".format(start_date.datetime))
             f.write('End date: {0:%Y/%m/%d %H:%M:%S.%f}\n'.format(end_date.datetime))
             for n in range(0,len(datelist)):
@@ -295,10 +303,11 @@ class Station(object):
         inventory_path = parfile.stationxml_directory+self.network_code+'.'+self.code+'.xml'
         inv = read_inventory(inventory_path,format='STATIONXML')
         network = inv.networks[0].select(station=self.code)
-        self.dataless = network
-        self.latitude = network[0][0].latitude
-        self.longitude = network[0][0].longitude
-        self.elevation = network[0][0].elevation
+        station = network[0]
+        self.dataless = station
+        self.latitude = station.latitude
+        self.longitude = station.longitude
+        self.elevation = station.elevation
         return self
     
     def select(self,time=None):
