@@ -23,7 +23,7 @@ import shutil
 import warnings
 import datetime
 
-parfile=Parfile()
+parfile=Parfile() 
 
 class Database(object):
     """ Database class contains Network class """
@@ -60,6 +60,14 @@ class Database(object):
         database.networks = networks
         return database
     
+   def get_seed_storage(network=None, station=None, location=None, channel=None, 
+                    starttime=None, endtime=None):
+       """ Mar 8. 2018, Y.C., returning True if data exist otherwise return the
+       (excepted) path of the data following the name convension
+       """
+       
+        
+   
 class Network(object):
     """ Network class contains the Station class
     Change log: Mar. 4, 2018, Y.C., include network code in station class
