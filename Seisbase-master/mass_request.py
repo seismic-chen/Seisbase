@@ -13,20 +13,22 @@ from obspy.clients.fdsn.mass_downloader import RectangularDomain, \
     Restrictions, MassDownloader
 
 # Rectangular domain containing parts of southern Germany.
-domain = RectangularDomain(minlatitude=51, maxlatitude=56,
-                           minlongitude=-120.0, maxlongitude=-112.0)
-
+#domain = RectangularDomain(minlatitude=51, maxlatitude=56,
+#                           minlongitude=-120.0, maxlongitude=-112.0)
+# Northern Hemisphere
+domain = RectangularDomain(minlatitude=0, maxlatitude=90,
+                           minlongitude=-180.0, maxlongitude=0.0)
 restrictions = Restrictions(
     # Get data for a whole year.
-    starttime=obspy.UTCDateTime(2016, 1, 1),
-    endtime=obspy.UTCDateTime(2016, 1, 2),
+    starttime=obspy.UTCDateTime(2006, 1, 1),
+    endtime=obspy.UTCDateTime(2006, 1, 2),
     # Chunk it to have one file per day.
     chunklength_in_sec=86400,
     # Considering the enormous amount of data associated with continuous
     # requests, you might want to limit the data based on SEED identifiers.
     # If the location code is specified, the location priority list is not
     # used; the same is true for the channel argument and priority list.
-    network="TD", station="*", location="", channel="*",
+    network="IU", station="COR", location="*", channel="*",
     # The typical use case for such a data set are noise correlations where
     # gaps are dealt with at a later stage.
     reject_channels_with_gaps=False,

@@ -60,11 +60,11 @@ class Database(object):
         database.networks = networks
         return database
     
-   def get_seed_storage(network=None, station=None, location=None, channel=None, 
-                    starttime=None, endtime=None):
-       """ Mar 8. 2018, Y.C., returning True if data exist otherwise return the
-       (excepted) path of the data following the name convension
-       """
+#   def get_seed_storage(network=None, station=None, location=None, channel=None, 
+#                    starttime=None, endtime=None):
+#       """ Mar 8. 2018, Y.C., returning True if data exist otherwise return the
+#       (excepted) path of the data following the name convension
+#       """
        
         
    
