@@ -22,6 +22,8 @@ from par import Parfile
 import shutil
 import warnings
 import datetime
+import csv
+from collections import OrderedDict
 
 parfile=Parfile() 
 
@@ -32,7 +34,7 @@ class Database(object):
         """ Create a new networks class """
         self.networks = networks
     def add(self,networkfile):
-        """ add new network class """
+        """ add new Network class """
         self.networks.append(networkfile)
         
     def select(self,network=None,station=None):
@@ -60,11 +62,11 @@ class Database(object):
         database.networks = networks
         return database
     
-   def get_seed_storage(network=None, station=None, location=None, channel=None, 
-                    starttime=None, endtime=None):
-       """ Mar 8. 2018, Y.C., returning True if data exist otherwise return the
-       (excepted) path of the data following the name convension
-       """
+#   def get_seed_storage(network=None, station=None, location=None, channel=None, 
+#                    starttime=None, endtime=None):
+#       """ Mar 8. 2018, Y.C., returning True if data exist otherwise return the
+#       (excepted) path of the data following the name convension
+#       """
        
         
    
@@ -95,7 +97,7 @@ class Network(object):
         return networks
         
     def add(self,stationfile):
-        """ add new Seed class """
+        """ add new Station class """
         self.stations.append(stationfile)
         self._get_network_code()
         
@@ -139,6 +141,21 @@ class Network(object):
         for n in range(0,len(self.stations)):
             self.stations[n].network_code = self.code
         return self
+    
+    def _create_data_completeness_table(self):
+        """Create data completness table following the AGS convension
+        e.g., 
+        stn	2010 2011 2012 2013   2014 2015 2016 2017		
+        BR2	N/A	 N/A  N/A  0.167	 N/A	  N/A  N/A N/A"""
+        stations=self.stations
+        dicttmp=[x.data_completeness for x in stations]
+        filename=self.code+'_data_completeness.csv'
+        with open(filename, 'w') as csvfile:
+            fieldnames=dicttmp[0].keys()
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(dicttmp)
+
     
 class Station(object):
     """ Station class contains the Seed class 
@@ -184,16 +201,15 @@ class Station(object):
             end_date=station.end_date
         self.start_date=start_date
         self.end_date=end_date
-        duration=end_date.datetime-start_date.datetime
+        duration=end_date.datetime-start_date.datetime+datetime.timedelta(days=1)
         # create consecutive date list
-        base = start_date
         numdays=duration.days
         datelist = [start_date + datetime.timedelta(days=x) for x in range(0, numdays)]
                 
         if time_string_list:
             if not station.start_date:
                 warnings.warn('Station start date is not defined')
-                station.start_date = UTCDateTime(0,0,0,0,0,0)
+                station.start_date = UTCDateTime(1,1,1,0,0,0)
             else:
                 if min(time_string_list) < station.start_date:
                     warnings.warn('Data begins before the first day of the station')
@@ -205,7 +221,7 @@ class Station(object):
                     warnings.warn('Data ends after the last day of the station')
                     
         # keep the seeds in the given time period
-        seed_list = [x for x in self.seeds if x.time>start_date and x.time<end_date]
+        seed_list = [x for x in self.seeds if x.time>=start_date and x.time<=end_date]
         data_percentage=len(seed_list)/float(duration.days)*100.
         self.data_perentage=data_percentage
 
@@ -222,8 +238,44 @@ class Station(object):
                     missing_date.append(datelist[n])
             f.close()
             self.missing_date = missing_date
+        
+        # get the yearly completeness
+        self._get_yearly_completeness()
         return self
-           
+    
+    def _get_yearly_completeness(self,start_year=None,end_year=None):
+        """check the data completeness for each year following the AGS convension
+        e.g., 
+        stn	2010 2011 2012 2013   2014 2015 2016 2017		
+        BR2	N/A	 N/A  N/A  0.167	 N/A	  N/A  N/A N/A
+        """
+        # prepare date string list
+        time_string_list = list()
+        seed_list = list()
+        missing_date = list()
+        if start_year is None:       
+            start_year = 2006
+
+        if end_year is None:
+            end_year = 2017
+            
+        for n in range(0,len(self.seeds)):
+            tmp_time_string = self.seeds[n].time
+            time_string_list.append(tmp_time_string.datetime)   
+        # dictionary variable
+        result = OrderedDict()
+        result["Station"] = self.code
+        for year in np.arange(start_year, end_year+1):
+            start_date = UTCDateTime(year,1,1)
+            end_date= UTCDateTime(year,12,31)
+            duration=(end_date.datetime-start_date.datetime).days+1
+            seed_list = [x for x in time_string_list if x>=start_date and x<=end_date]
+            num_of_seed = len(seed_list)
+            percentage=float(num_of_seed)/float(duration)*100.
+            result["{0}".format(year)]="{0:3.1f}%".format(percentage)
+        self.data_completeness=result
+        return self
+
     def get_statistics(self):
         import matplotlib.cm as cm
         """ Return data statistics for a given station """
@@ -343,6 +395,7 @@ class Station(object):
     def add(self,seedfile):
         """ add new Seed class """
         self.seeds.append(seedfile)
+        
         
     def __str__(self):
         """ Modified after obspy __str__ function """
