@@ -6,13 +6,13 @@ Mar. 4, 2018, Y.C., Code to check the completeness of the downloaded ambient
 noise data
 @author: yunfeng
 """
+import os.path
 from obspy.clients.fdsn.client import Client
 from obspy import UTCDateTime
 from obspy import read, read_inventory
 from mpl_toolkits.basemap import Basemap
 import numpy as np
 import matplotlib.pyplot as plt
-
 from database import Database,Station,Seed
 import pickle 
 
@@ -45,10 +45,10 @@ m.drawmeridians(np.linspace(-120, -110, 2), labels=[0, 0, 1, 1], fmt="%.2f",
                 dashes=[2, 2])
 fig.bmap = m
 colors = {'CN': 'blue', 'TD': 'green', 'RV': 'red', 'CR': 'purple'}
-inv_raven.plot(fig=fig, show=False,label=True,color_per_network=colors)
-inv_td.plot(fig=fig, show=False,label=True,color_per_network=colors)
-inv_cnsn.plot(fig=fig, show=False,label=True,color_per_network=colors)
-inv_crane.plot(fig=fig, show=False,label=True,color_per_network=colors)
+inv_raven.plot(fig=fig, show=False,label=False,color_per_network=colors)
+inv_td.plot(fig=fig, show=False,label=False,color_per_network=colors)
+inv_cnsn.plot(fig=fig, show=False,label=False,color_per_network=colors)
+inv_crane.plot(fig=fig, show=False,label=False,color_per_network=colors)
 plt.show()
 
 # load the database object
@@ -56,5 +56,18 @@ from database import Database,Station,Seed
 import pickle 
 file_db = open('noise_database.obj', 'r') 
 db = pickle.load(file_db)
-station = db.networks[1].stations[0]
-station.check_completeness(output_to_file=True)
+#stations = db.networks[0].stations
+#station=stations[0]
+
+networks = db.networks
+start_date=UTCDateTime(2015,1,1)
+end_date=UTCDateTime(2016,12,31)
+for network in networks[0:1]:
+    stations= network.stations
+    for station in stations:
+        print station.code
+        # check if output exist, if so, skip the current station
+        filename=station.code+'_missing_data.txt'
+        if os.path.isfile(filename):
+            continue
+        station.check_completeness(start_date=start_date, end_date=end_date, output_to_file=False)
