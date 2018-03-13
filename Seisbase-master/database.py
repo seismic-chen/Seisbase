@@ -185,12 +185,16 @@ class Station(object):
         """
         # prepare date string list
         time_string_list = list()
+        size_string_list = list()
         seed_list = list()
         missing_date = list()
-
+        small_date = list()
+        small_size = list()
         for n in range(0,len(self.seeds)):
             tmp_time_string = self.seeds[n].time
-            time_string_list.append(tmp_time_string.datetime)
+            time_string_list.append(tmp_time_string)
+            tmp_size_string = float(self.seeds[n].size)/1024./1024. # convert to MB
+            size_string_list.append(tmp_size_string)
  
         # obtain the station operation period from stationxml file
         self.get_inventory()
@@ -220,11 +224,16 @@ class Station(object):
                 if  max(time_string_list) >station.end_date:
                     warnings.warn('Data ends after the last day of the station')
                     
-        # keep the seeds in the given time period
+        # keep the seeds in the given time period 
         seed_list = [x for x in self.seeds if x.time>=start_date and x.time<=end_date]
         data_percentage=len(seed_list)/float(duration.days)*100.
         self.data_perentage=data_percentage
-
+   
+        for n in range(0,len(datelist)):
+            if datelist[n] not in time_string_list:
+                missing_date.append(datelist[n])
+        self.missing_date = missing_date    
+        
         # output the missing date to file
         if output_to_file:
             f=open('{0:s}_{1:s}_missing_data.txt'.format(self.network_code, self.code),'w')
@@ -232,13 +241,22 @@ class Station(object):
             f.write('Station end date: {0:%Y/%m/%d %H:%M:%S.%f}\n'.format(station.end_date.datetime))
             f.write("Start date: {0:%Y/%m/%d %H:%M:%S.%f}\n".format(start_date.datetime))
             f.write('End date: {0:%Y/%m/%d %H:%M:%S.%f}\n'.format(end_date.datetime))
-            for n in range(0,len(datelist)):
-                if datelist[n] not in time_string_list:
-                    f.write('{0:%Y/%m/%d}\n'.format(datelist[n].datetime))
-                    missing_date.append(datelist[n])
-            f.close()
-            self.missing_date = missing_date
-        
+            for tmpdate in missing_date:
+                f.write('{0:%Y/%m/%d}\n'.format(tmpdate.datetime))  
+            f.close()           
+            
+        # check the size of existing seed files
+        for n in range(0,len(size_string_list)):
+            if size_string_list[n]<=3.0:
+                small_date.append(time_string_list[n])
+                small_size.append(size_string_list[n])
+        self.small_date = small_date 
+        # output seed file that is to small in size
+        if output_to_file:
+            f1=open('{0:s}_{1:s}_small_data.txt'.format(self.network_code, self.code),'w')
+            for n in range(0,len(small_date)):
+                f1.write('{0:%Y/%m/%d} {1:4.1f} MB\n'.format(small_date[n].datetime,small_size[n]))
+            f1.close()
         # get the yearly completeness
         self._get_yearly_completeness()
         return self
@@ -443,10 +461,11 @@ class Station(object):
         
 class Seed(object):
     """ Seed class contains the FullSeed file information """
-    def __init__(self,code='',path='',time=''):
+    def __init__(self,code='',path='',time='',size=''):
         self.code = code
         self.path = path
         self.time = time
+        self.size = size
         
     def read_seed(self,t0=None,t1=None):
         """ Read seed file using obspy read module
@@ -551,11 +570,13 @@ class Seed(object):
         ret = ("Seed {seed_code}\n"
                "\tSeed Code: {seed_code}\n"
                "\tDate: {date}\n"
-               "\tPath: {path}\n")
+               "\tPath: {path}\n"
+               "\tSize: {size:5.1f} MB\n")
         ret = ret.format(
             seed_code=self.code,
             date=str(self.time) if self.time else "",
-            path=self.path)
+            path=self.path,
+            size=float(self.size)/1024./1024.)
         return ret
     
     def _repr_pretty_(self, p, cycle):
