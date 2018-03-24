@@ -213,7 +213,7 @@ class Station(object):
         if time_string_list:
             if not station.start_date:
                 warnings.warn('Station start date is not defined')
-                station.start_date = UTCDateTime(1,1,1,0,0,0)
+                station.start_date = UTCDateTime(1900,1,1,0,0,0)
             else:
                 if min(time_string_list) < station.start_date:
                     warnings.warn('Data begins before the first day of the station')
@@ -513,14 +513,16 @@ class Seed(object):
         shutil.copyfile(self.path,default_filename)
         return self.miniseed_direcotry
     
-    def merge_seed(self,target_directory=None,target_seed=None):
+    def merge_seed(self,filein=None,target_directory=None,target_seed=None):
         """ Merge a daily seed/miniseed files with an target seed
+        Change log:  Mar. 23, 2018, Y.C., add filein option 
         """
         import subprocess
         if not os.path.exists(self.path):  
             print "seed file doesn't exists"  
             raise IOError  
-        filein=self.path
+        if filein is None:
+            filein=self.path
         fileout=os.path.join(target_directory, target_seed)
         # check if output file exists
         if os.path.isfile(fileout):
@@ -533,10 +535,12 @@ class Seed(object):
                 output.write(data)  
     
     def convert_to_miniseed(self,output_directory=None,output_name=None,
-                            channel=None):
+                            channel=None,if_merge=False):
         """ Convert the Fullseed file to miniseed
         could append argument to extract certain station or component
-          -C arg retrieve the comments where 'arg' is either STN or CHN"""
+          -C arg retrieve the comments where 'arg' is either STN or CHN
+        Change log: Mar. 23, 2018, Y.C., add merge option  
+        """    
         import subprocess   
         cwd = os.getcwd()
         seed_directory = os.path.dirname(self.path)
@@ -554,7 +558,15 @@ class Seed(object):
         # if miniseed file exists
         if output_name is not None:
             new_filename = os.path.join(output_directory, output_name)
-            os.rename(default_filename, new_filename)
+            if if_merge: # merge the file do not overwrite
+                print new_filename
+                self.merge_seed(filein=default_filename,
+                                target_directory=output_directory,
+                                target_seed=output_name)
+                # delete miniseed
+                os.unlink(default_filename)
+            else: # overwrite the file
+                os.rename(default_filename, new_filename)
             self.miniseed_path = new_filename
         else:
             self.miniseed_path = default_filename
