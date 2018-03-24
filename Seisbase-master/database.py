@@ -22,6 +22,8 @@ from par import Parfile
 import shutil
 import warnings
 import datetime
+import csv
+from collections import OrderedDict
 
 parfile=Parfile() 
 
@@ -32,7 +34,7 @@ class Database(object):
         """ Create a new networks class """
         self.networks = networks
     def add(self,networkfile):
-        """ add new network class """
+        """ add new Network class """
         self.networks.append(networkfile)
         
     def select(self,network=None,station=None):
@@ -95,7 +97,7 @@ class Network(object):
         return networks
         
     def add(self,stationfile):
-        """ add new Seed class """
+        """ add new Station class """
         self.stations.append(stationfile)
         self._get_network_code()
         
@@ -140,6 +142,21 @@ class Network(object):
             self.stations[n].network_code = self.code
         return self
     
+    def _create_data_completeness_table(self):
+        """Create data completness table following the AGS convension
+        e.g., 
+        stn	2010 2011 2012 2013   2014 2015 2016 2017		
+        BR2	N/A	 N/A  N/A  0.167	 N/A	  N/A  N/A N/A"""
+        stations=self.stations
+        dicttmp=[x.data_completeness for x in stations]
+        filename=self.code+'_data_completeness.csv'
+        with open(filename, 'w') as csvfile:
+            fieldnames=dicttmp[0].keys()
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(dicttmp)
+
+    
 class Station(object):
     """ Station class contains the Seed class 
     Change Log: Mar. 4, 2018, Y.C., add check_completness function
@@ -168,12 +185,16 @@ class Station(object):
         """
         # prepare date string list
         time_string_list = list()
+        size_string_list = list()
         seed_list = list()
         missing_date = list()
-
+        small_date = list()
+        small_size = list()
         for n in range(0,len(self.seeds)):
             tmp_time_string = self.seeds[n].time
-            time_string_list.append(tmp_time_string.datetime)
+            time_string_list.append(tmp_time_string)
+            tmp_size_string = float(self.seeds[n].size)/1024./1024. # convert to MB
+            size_string_list.append(tmp_size_string)
  
         # obtain the station operation period from stationxml file
         self.get_inventory()
@@ -184,16 +205,15 @@ class Station(object):
             end_date=station.end_date
         self.start_date=start_date
         self.end_date=end_date
-        duration=end_date.datetime-start_date.datetime
+        duration=end_date.datetime-start_date.datetime+datetime.timedelta(days=1)
         # create consecutive date list
-        base = start_date
         numdays=duration.days
         datelist = [start_date + datetime.timedelta(days=x) for x in range(0, numdays)]
                 
         if time_string_list:
             if not station.start_date:
                 warnings.warn('Station start date is not defined')
-                station.start_date = UTCDateTime(0,0,0,0,0,0)
+                station.start_date = UTCDateTime(1900,1,1,0,0,0)
             else:
                 if min(time_string_list) < station.start_date:
                     warnings.warn('Data begins before the first day of the station')
@@ -204,11 +224,16 @@ class Station(object):
                 if  max(time_string_list) >station.end_date:
                     warnings.warn('Data ends after the last day of the station')
                     
-        # keep the seeds in the given time period
-        seed_list = [x for x in self.seeds if x.time>start_date and x.time<end_date]
+        # keep the seeds in the given time period 
+        seed_list = [x for x in self.seeds if x.time>=start_date and x.time<=end_date]
         data_percentage=len(seed_list)/float(duration.days)*100.
         self.data_perentage=data_percentage
-
+   
+        for n in range(0,len(datelist)):
+            if datelist[n] not in time_string_list:
+                missing_date.append(datelist[n])
+        self.missing_date = missing_date    
+        
         # output the missing date to file
         if output_to_file:
             f=open('{0:s}_{1:s}_missing_data.txt'.format(self.network_code, self.code),'w')
@@ -216,14 +241,59 @@ class Station(object):
             f.write('Station end date: {0:%Y/%m/%d %H:%M:%S.%f}\n'.format(station.end_date.datetime))
             f.write("Start date: {0:%Y/%m/%d %H:%M:%S.%f}\n".format(start_date.datetime))
             f.write('End date: {0:%Y/%m/%d %H:%M:%S.%f}\n'.format(end_date.datetime))
-            for n in range(0,len(datelist)):
-                if datelist[n] not in time_string_list:
-                    f.write('{0:%Y/%m/%d}\n'.format(datelist[n].datetime))
-                    missing_date.append(datelist[n])
-            f.close()
-            self.missing_date = missing_date
+            for tmpdate in missing_date:
+                f.write('{0:%Y/%m/%d}\n'.format(tmpdate.datetime))  
+            f.close()           
+            
+        # check the size of existing seed files
+        for n in range(0,len(size_string_list)):
+            if size_string_list[n]<=3.0:
+                small_date.append(time_string_list[n])
+                small_size.append(size_string_list[n])
+        self.small_date = small_date 
+        # output seed file that is to small in size
+        if output_to_file:
+            f1=open('{0:s}_{1:s}_small_data.txt'.format(self.network_code, self.code),'w')
+            for n in range(0,len(small_date)):
+                f1.write('{0:%Y/%m/%d} {1:4.1f} MB\n'.format(small_date[n].datetime,small_size[n]))
+            f1.close()
+        # get the yearly completeness
+        self._get_yearly_completeness()
         return self
-           
+    
+    def _get_yearly_completeness(self,start_year=None,end_year=None):
+        """check the data completeness for each year following the AGS convension
+        e.g., 
+        stn	2010 2011 2012 2013   2014 2015 2016 2017		
+        BR2	N/A	 N/A  N/A  0.167	 N/A	  N/A  N/A N/A
+        """
+        # prepare date string list
+        time_string_list = list()
+        seed_list = list()
+        missing_date = list()
+        if start_year is None:       
+            start_year = 2006
+
+        if end_year is None:
+            end_year = 2017
+            
+        for n in range(0,len(self.seeds)):
+            tmp_time_string = self.seeds[n].time
+            time_string_list.append(tmp_time_string.datetime)   
+        # dictionary variable
+        result = OrderedDict()
+        result["Station"] = self.code
+        for year in np.arange(start_year, end_year+1):
+            start_date = UTCDateTime(year,1,1)
+            end_date= UTCDateTime(year,12,31)
+            duration=(end_date.datetime-start_date.datetime).days+1
+            seed_list = [x for x in time_string_list if x>=start_date and x<=end_date]
+            num_of_seed = len(seed_list)
+            percentage=float(num_of_seed)/float(duration)*100.
+            result["{0}".format(year)]="{0:3.1f}%".format(percentage)
+        self.data_completeness=result
+        return self
+
     def get_statistics(self):
         import matplotlib.cm as cm
         """ Return data statistics for a given station """
@@ -344,6 +414,7 @@ class Station(object):
         """ add new Seed class """
         self.seeds.append(seedfile)
         
+        
     def __str__(self):
         """ Modified after obspy __str__ function """
         contents = self.get_contents()
@@ -390,10 +461,11 @@ class Station(object):
         
 class Seed(object):
     """ Seed class contains the FullSeed file information """
-    def __init__(self,code='',path='',time=''):
+    def __init__(self,code='',path='',time='',size=''):
         self.code = code
         self.path = path
         self.time = time
+        self.size = size
         
     def read_seed(self,t0=None,t1=None):
         """ Read seed file using obspy read module
@@ -441,14 +513,16 @@ class Seed(object):
         shutil.copyfile(self.path,default_filename)
         return self.miniseed_direcotry
     
-    def merge_seed(self,target_directory=None,target_seed=None):
+    def merge_seed(self,filein=None,target_directory=None,target_seed=None):
         """ Merge a daily seed/miniseed files with an target seed
+        Change log:  Mar. 23, 2018, Y.C., add filein option 
         """
         import subprocess
         if not os.path.exists(self.path):  
             print "seed file doesn't exists"  
             raise IOError  
-        filein=self.path
+        if filein is None:
+            filein=self.path
         fileout=os.path.join(target_directory, target_seed)
         # check if output file exists
         if os.path.isfile(fileout):
@@ -461,10 +535,12 @@ class Seed(object):
                 output.write(data)  
     
     def convert_to_miniseed(self,output_directory=None,output_name=None,
-                            channel=None):
+                            channel=None,if_merge=False):
         """ Convert the Fullseed file to miniseed
         could append argument to extract certain station or component
-          -C arg retrieve the comments where 'arg' is either STN or CHN"""
+          -C arg retrieve the comments where 'arg' is either STN or CHN
+        Change log: Mar. 23, 2018, Y.C., add merge option  
+        """    
         import subprocess   
         cwd = os.getcwd()
         seed_directory = os.path.dirname(self.path)
@@ -482,7 +558,15 @@ class Seed(object):
         # if miniseed file exists
         if output_name is not None:
             new_filename = os.path.join(output_directory, output_name)
-            os.rename(default_filename, new_filename)
+            if if_merge: # merge the file do not overwrite
+                print new_filename
+                self.merge_seed(filein=default_filename,
+                                target_directory=output_directory,
+                                target_seed=output_name)
+                # delete miniseed
+                os.unlink(default_filename)
+            else: # overwrite the file
+                os.rename(default_filename, new_filename)
             self.miniseed_path = new_filename
         else:
             self.miniseed_path = default_filename
@@ -498,11 +582,13 @@ class Seed(object):
         ret = ("Seed {seed_code}\n"
                "\tSeed Code: {seed_code}\n"
                "\tDate: {date}\n"
-               "\tPath: {path}\n")
+               "\tPath: {path}\n"
+               "\tSize: {size:5.1f} MB\n")
         ret = ret.format(
             seed_code=self.code,
             date=str(self.time) if self.time else "",
-            path=self.path)
+            path=self.path,
+            size=float(self.size)/1024./1024.)
         return ret
     
     def _repr_pretty_(self, p, cycle):
