@@ -5,6 +5,8 @@ Created on Fri Jan 19 11:46:28 2018
 convert the miniseed file from IRIS to input formats required by ancc and 
 python code
 Jan. 20, 2018, use new function merge_seed to create monthly seed
+Mar. 23, 2018, set the time range for data conversion; convert FullSeed to 
+miniseed for CRANE station
 @author: yunfeng
 """
 from obspy import read
@@ -40,3 +42,7 @@ for seed1 in db_sta1.networks[0].stations[0].seeds:
     miniseed_path=os.path.join(miniseed_directory,miniseed_name)
     # merge seed with an existing seed in the target directory
     seed1.merge_seed(target_directory=miniseed_directory,target_seed=miniseed_name)
+    
+    seed1.convert_to_miniseed(output_directory=output_directory,output_name='mini.seed')
+        default_filename = os.path.join(output_directory, "mini.seed")
+        new_filename = os.path.join(output_directory, output_name)
