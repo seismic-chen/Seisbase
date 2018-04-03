@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 from matplotlib.dates import date2num,datetime,DateFormatter
 import numpy as np
 from obspy import read, UTCDateTime
+from obspy.clients.fdsn import Client
 import os
 import copy
 import fnmatch
@@ -159,7 +160,7 @@ class Network(object):
     
 class Station(object):
     """ Station class contains the Seed class 
-    Change Log: Mar. 4, 2018, Y.C., add check_completness function
+    Change Log: Mar. 4, 2018, Y.C., add check_completeness function
     the data
     """
     def __init__(self,seeds=list(),network_code='',code='',path='',start_date='',end_date='',
@@ -293,6 +294,18 @@ class Station(object):
             result["{0}".format(year)]="{0:3.1f}%".format(percentage)
         self.data_completeness=result
         return self
+    
+    def get_station(self):
+        """ Return station inventory using obspy get_stations module"""
+        client = Client("IRIS")
+        #starttime = UTCDateTime("1990-01-01")
+        #endtime = UTCDateTime("2018-01-08")
+        # define a rectangular region for station selection
+        inventory_path = parfile.stationxml_directory+self.network_code+'.'+self.code+'.xml'
+        inventory = client.get_stations(network=self.network_code, station=self.code,channel="*",level="response")
+        inventory.write(inventory_path, format='STATIONXML')
+        return
+        
 
     def get_statistics(self):
         import matplotlib.cm as cm
@@ -376,9 +389,12 @@ class Station(object):
         """
         Change Log:
         Mar. 4, 2018, Y.C., read individual station xml instead of network ones
+        Apr. 4, 2018, Y.C., download inventory file if not exist
         """
         from obspy import read_inventory
         inventory_path = parfile.stationxml_directory+self.network_code+'.'+self.code+'.xml'
+        if not os.path.isfile(inventory_path):
+            get_station();
         inv = read_inventory(inventory_path,format='STATIONXML')
         network = inv.networks[0].select(station=self.code)
         station = network[0]
@@ -539,7 +555,7 @@ class Seed(object):
         """ Convert the Fullseed file to miniseed
         could append argument to extract certain station or component
           -C arg retrieve the comments where 'arg' is either STN or CHN
-        Change log: Mar. 23, 2018, Y.C., add merge option  
+        Change log: Mar. 23, 2018, Y.C., add merge option
         """    
         import subprocess   
         cwd = os.getcwd()
