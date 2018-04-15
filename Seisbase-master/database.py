@@ -10,7 +10,7 @@ add exception when reading miniseed file
 Mar. 4, 2018, add function to check the completeness of the database
 @author: yunfeng
 """
-
+import subprocess
 import matplotlib.pyplot as plt
 from matplotlib.dates import date2num,datetime,DateFormatter
 import numpy as np
@@ -519,8 +519,6 @@ class Seed(object):
         """ Move (make a copy of) a daily seed/miniseed files to the target 
         direcotry        
         """
-        import subprocess
-
         filename=os.path.basename(self.path)
         default_filename = os.path.join(output_directory, filename)
         if output_name is not None:
@@ -529,17 +527,32 @@ class Seed(object):
         shutil.copyfile(self.path,default_filename)
         return self.miniseed_direcotry
     
-    def merge_seed(self,filein=None,target_directory=None,target_seed=None):
+    def merge_seed(self,filein=None,target_directory=None,target_seed=None,channel=None):
         """ Merge a daily seed/miniseed files with an target seed
         Change log:  Mar. 23, 2018, Y.C., add filein option 
+        Apr. 10, 2018, Y.C., add option to extract vertical component only
+        note this will cause slow down of the code
         """
-        import subprocess
         if not os.path.exists(self.path):  
             print "seed file doesn't exists"  
             raise IOError  
         if filein is None:
             filein=self.path
         fileout=os.path.join(target_directory, target_seed)
+        if channel is not None:
+            defaultname=os.path.join(target_directory, 'tmpz.mseed')            
+            print "Extracting all {0:s} components".format(channel)
+            try:
+                st=read(filein)
+                st=st.select(channel=channel)
+                # save to a tmp file
+                st.write(filename=defaultname,format="MSEED")
+                st.clear()
+                filein=defaultname
+            except Exception as err:
+                print '{}: skipping'.format(err)
+                return None
+            
         # check if output file exists
         if os.path.isfile(fileout):
             mode='ab'
@@ -548,7 +561,12 @@ class Seed(object):
         with open(fileout,mode) as output: 
             with open(filein, 'rb') as input:  
                 data=input.read()  
-                output.write(data)  
+                output.write(data)
+                
+        if channel is not None:
+            os.unlink(defaultname)
+        return None
+                
     
     def convert_to_miniseed(self,output_directory=None,output_name=None,
                             channel=None,if_merge=False):
@@ -556,8 +574,9 @@ class Seed(object):
         could append argument to extract certain station or component
           -C arg retrieve the comments where 'arg' is either STN or CHN
         Change log: Mar. 23, 2018, Y.C., add merge option
+        Apr. 10, 2018, Y.C., if conversion failed, rename directly
+        add option to extract vertical component only
         """    
-        import subprocess   
         cwd = os.getcwd()
         seed_directory = os.path.dirname(self.path)
         file_name = os.path.basename(self.path)
@@ -566,19 +585,25 @@ class Seed(object):
             output_directory = cwd
         rdseed_cmd = parfile.rdseed_path
         subprocess.call([rdseed_cmd, '-d', '-o', '4', '-f', file_name, '-q',output_directory])
+    
         # check if miniseed exists
         default_filename = os.path.join(output_directory, "mini.seed")
         if not os.path.isfile(default_filename):
-            print "Failed to read seed"
-            return None 
+            print "Failed to read Fullseed {0:s}, this is a miniseed and rename directly".format(self.path)
+            self.merge_seed(target_directory=output_directory,target_seed=output_name,channel=channel)
+            new_filename = os.path.join(output_directory, output_name)
+            self.miniseed_path = new_filename
+            return self.miniseed_path
+
         # if miniseed file exists
         if output_name is not None:
+            print "conversion from {0:s} to mini.seed success".format(file_name)
             new_filename = os.path.join(output_directory, output_name)
             if if_merge: # merge the file do not overwrite
-                print new_filename
+#                print new_filename
                 self.merge_seed(filein=default_filename,
                                 target_directory=output_directory,
-                                target_seed=output_name)
+                                target_seed=output_name,channel=channel)
                 # delete miniseed
                 os.unlink(default_filename)
             else: # overwrite the file
