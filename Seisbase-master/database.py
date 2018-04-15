@@ -394,7 +394,7 @@ class Station(object):
         from obspy import read_inventory
         inventory_path = parfile.stationxml_directory+self.network_code+'.'+self.code+'.xml'
         if not os.path.isfile(inventory_path):
-            get_station();
+            self.get_station();
         inv = read_inventory(inventory_path,format='STATIONXML')
         network = inv.networks[0].select(station=self.code)
         station = network[0]
